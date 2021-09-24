@@ -11,6 +11,20 @@ class AuthorController {
 		const authors = await Author.findAll()
 		return res.json(authors)
 	}
+	async delete(req, res) {
+		try {
+			const { id } = req.params
+			const author = await Author.findOne({ where: { id } })
+			if (author) {
+				await Author.destroy({ where: { id } })
+				return res.json('Автор удален')
+			} else {
+				return res.json('Автора нет в базе данных')
+			}
+		} catch (e) {
+			return res.json(e);
+		}
+	}
 }
 
 module.exports = new AuthorController()

@@ -56,6 +56,21 @@ class BookController {
 		)
 		return res.json(book)
 	}
+	async delete(req, res) {
+		try {
+			const { id } = req.params
+			const book = await Book.findOne({ where: { id } })
+			if (book) {
+				await Book.destroy({ where: { id } })
+				return res.json('Книга удалена')
+			} else {
+				return res.json('Книги нет в базе данных')
+			}
+			// await CartBook.destroy({ where: { bookId: id } })
+		} catch (e) {
+			return res.json(e);
+		}
+	}
 }
 
 module.exports = new BookController()

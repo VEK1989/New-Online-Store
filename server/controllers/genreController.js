@@ -11,6 +11,20 @@ class GenreController {
 		const genres = await Genre.findAll()
 		return res.json(genres)
 	}
+	async delete(req, res) {
+		try {
+			const { id } = req.params
+			const genre = await Genre.findOne({ where: { id } })
+			if (genre) {
+				await Genre.destroy({ where: { id } })
+				return res.json('Жанр удален')
+			} else {
+				return res.json('Жанра нет в базе данных')
+			}
+		} catch (e) {
+			return res.json(e);
+		}
+	}
 }
 
 module.exports = new GenreController()
