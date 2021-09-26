@@ -4,7 +4,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { privateRoutes, publicRoutes } from '../../router/route'
 import { SHOP_ROUTE } from '../../utils/consts'
 
-const AppRouter = () => {
+const AppRouter: React.FC = () => {
 	const isAuth = useTypedSelector(state => state.auth)
 	return (
 		<Switch>

@@ -1,0 +1,19 @@
+.header{
+	padding: 43px 43px 43px 43px;
+	height: 128px;
+	border-bottom: 1px solid #EAEAEA;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.logo{
+	width: 150px;
+	display: flex;
+}
+
+.logoHeader{
+	font-size: 20px;
+	font-weight: bold;
+	display: block;
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './Shop.module.css'
 
-const Shop = () => {
+const Shop: React.FC = () => {
 	return (
 		<div>
 			SHOP

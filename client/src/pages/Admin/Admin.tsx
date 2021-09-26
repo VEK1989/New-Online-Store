@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './Admin.module.css'
 
-const Admin = () => {
+const Admin: React.FC = () => {
 	return (
 		<div>
 			Admin

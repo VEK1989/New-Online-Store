@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './ProductPage.module.css'
 
-const ProductPage = () => {
+const ProductPage: React.FC = () => {
 	return (
 		<div>
 			Book
