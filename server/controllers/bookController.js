@@ -14,12 +14,13 @@ class BookController {
 
 			if (info) {
 				info = JSON.parse(info)
-				info.forEach(i => {
+				info.forEach(i =>
 					BookInfo.create({
+						title: i.title,
 						description: i.description,
 						bookId: book.id
 					})
-				})
+				)
 			}
 			return res.json(book)
 		} catch (e) {

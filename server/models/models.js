@@ -5,7 +5,14 @@ const User = sequelize.define('user', {
 	id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
 	email: { type: DataTypes.STRING, unique: true },
 	password: { type: DataTypes.STRING },
-	role: { type: DataTypes.STRING, defaultValue: 'USER' }
+	role: { type: DataTypes.STRING, defaultValue: 'USER' },
+	activationLink: { type: DataTypes.STRING },
+	isActivated: { type: DataTypes.BOOLEAN, defaultValue: false },
+})
+
+const Token = sequelize.define('token', {
+	id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+	refreshToken: { type: DataTypes.STRING, primaryKey: true }
 })
 
 const Cart = sequelize.define('cart', {
@@ -51,6 +58,9 @@ const AuthorGenre = sequelize.define('author_genre', {
 User.hasOne(Cart)
 Cart.belongsTo(User)
 
+User.hasOne(Token)
+Token.belongsTo(User)
+
 User.hasMany(Rating)
 Rating.belongsTo(User)
 
@@ -84,5 +94,6 @@ module.exports = {
 	Genre,
 	Rating,
 	BookInfo,
-	AuthorGenre
+	AuthorGenre,
+	Token
 }

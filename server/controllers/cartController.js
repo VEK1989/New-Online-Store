@@ -1,4 +1,5 @@
 const { Cart, CartBook, Book, BookInfo } = require('../models/models')
+const tokenService = require('../service/token-service')
 const jwt = require('jsonwebtoken')
 const { Op } = require("sequelize")
 
@@ -7,7 +8,7 @@ class CartController {
 		try {
 			const { id } = req.body
 			const token = req.headers.authorization.split(' ')[1]
-			const user = jwt.verify(token, process.env.SECRET_KEY)
+			const user = jwt.verify(token, process.env.SECRET_ACCESS_KEY)
 			const cart = await Cart.findOne({ where: { userId: user.id } })
 			await CartBook.create({ cartId: cart.id, bookId: id })
 			return res.json('Товар добавлен в корзину')
@@ -19,7 +20,11 @@ class CartController {
 	async getBook(req, res) {
 		try {
 			const token = req.headers.authorization.split(' ')[1]
-			const user = jwt.verify(token, process.env.SECRET_KEY)
+			const userData = tokenService.validateAccessToken(token)
+			if (!userData) {
+				return res.status(401).json({ message: "Не авторизован" })
+			}
+			const user = jwt.verify(token, process.env.SECRET_ACCESS_KEY)
 			const { id } = await Cart.findOne({ where: { userId: user.id } })
 			const cart = await CartBook.findAll({ where: { cartId: id } })
 
