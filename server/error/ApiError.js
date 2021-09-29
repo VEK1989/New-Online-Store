@@ -3,9 +3,10 @@ class ApiError extends Error {
 	errors
 
 	constructor(status, errors, message) {
-		super(message)
+		super()
 		this.status = status
 		this.errors = errors
+		this.message = message
 	}
 
 	static unauthorizedError() {

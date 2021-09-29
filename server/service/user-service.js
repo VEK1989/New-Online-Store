@@ -64,7 +64,7 @@ class UserService {
 		if (!userData || !tokenFromDb) {
 			throw ApiError.unauthorizedError()
 		}
-		const user = await User.findOne({ where: { id: userData.userId } }) //тут похоже косяк, переделать
+		const user = await User.findOne({ where: { id: tokenFromDb.userId } })
 		const userDto = new UserDto(user) //создаем объект с нужными полями для генерации токенов
 		const tokens = tokenService.generateToken({ ...userDto }) // генерируем токены
 		await tokenService.saveToken(userDto.id, tokens.refreshToken) // сохраняем токены
