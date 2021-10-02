@@ -1,8 +1,9 @@
 const { Rating, Book } = require('../models/models')
 const jwt = require('jsonwebtoken')
+const ApiError = require('../error/ApiError')
 
 class RatingController {
-	async addRating(req, res) {
+	async addRating(req, res, next) {
 		try {
 			const { rate, bookId } = req.body
 			const token = req.headers.authorization.split(' ')[1]
@@ -27,11 +28,11 @@ class RatingController {
 
 			return res.json('Рейтинг успешно добавлен')
 		} catch (e) {
-			console.error(e)
+			next(ApiError.badRequest(e.message))
 		}
 	}
 
-	async checkRating(req, res) {
+	async checkRating(req, res, next) {
 		try {
 			const { bookId } = req.body
 			const token = req.headers.authorization.split(' ')[1]
@@ -45,7 +46,7 @@ class RatingController {
 			}
 			return res.json({ allow: true })
 		} catch (e) {
-			return res.status(401).json('Что-то пошло не так')
+			next(ApiError.unauthorizedError(e.message))
 		}
 	}
 }

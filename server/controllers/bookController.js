@@ -1,4 +1,4 @@
-const { Book, BookInfo } = require('../models/models')
+const { Book, BookInfo, CartBook } = require('../models/models')
 const ApiError = require('../error/ApiError')
 const uuid = require('uuid')
 const path = require('path')
@@ -27,37 +27,46 @@ class BookController {
 			next(ApiError.badRequest(e.message))
 		}
 	}
-	async getAll(req, res) {
-		let { authorId, genreId, limit, page } = req.query
-		page = page || 1
-		limit = limit || 10
-		let offset = page * limit - limit
-		let books
-		if (!authorId && !genreId) {
-			books = await Book.findAndCountAll({ limit, offset })
-		}
-		if (authorId && !genreId) {
-			books = await Book.findAndCountAll({ where: { authorId }, limit, offset })
-		}
-		if (!authorId && genreId) {
-			books = await Book.findAndCountAll({ where: { genreId }, limit, offset })
-		}
-		if (authorId && genreId) {
-			books = await Book.findAndCountAll({ where: { authorId, genreId }, limit, offset })
-		}
-		return res.json(books)
-	}
-	async getOne(req, res) {
-		const { id } = req.params
-		const book = await Book.findOne(
-			{
-				where: { id },
-				include: [{ model: BookInfo, as: 'info' }]
+
+	async getAll(req, res, next) {
+		try {
+			let { authorId, genreId, limit, page } = req.query
+			page = page || 1
+			limit = limit || 10
+			let offset = page * limit - limit
+			let books
+			if (!authorId && !genreId) {
+				books = await Book.findAndCountAll({ limit, offset })
 			}
-		)
-		return res.json(book)
+			if (authorId && !genreId) {
+				books = await Book.findAndCountAll({ where: { authorId }, limit, offset })
+			}
+			if (!authorId && genreId) {
+				books = await Book.findAndCountAll({ where: { genreId }, limit, offset })
+			}
+			if (authorId && genreId) {
+				books = await Book.findAndCountAll({ where: { authorId, genreId }, limit, offset })
+			}
+			return res.json(books)
+		} catch (e) {
+			next(ApiError.badRequest(e.message))
+		}
 	}
-	async delete(req, res) {
+	async getOne(req, res, next) {
+		try {
+			const { id } = req.params
+			const book = await Book.findOne(
+				{
+					where: { id },
+					include: [{ model: BookInfo, as: 'info' }]
+				}
+			)
+			return res.json(book)
+		} catch (e) {
+			next(ApiError.badRequest(e.message))
+		}
+	}
+	async delete(req, res, next) {
 		try {
 			const { id } = req.params
 			const book = await Book.findOne({ where: { id } })
@@ -67,9 +76,9 @@ class BookController {
 			} else {
 				return res.json('Книги нет в базе данных')
 			}
-			// await CartBook.destroy({ where: { bookId: id } })
+			await CartBook.destroy({ where: { bookId: id } })
 		} catch (e) {
-			return res.json(e);
+			next(ApiError.badRequest(e.message))
 		}
 	}
 }

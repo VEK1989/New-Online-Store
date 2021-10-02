@@ -2,16 +2,28 @@ const { Genre } = require('../models/models')
 const ApiError = require('../error/ApiError')
 
 class GenreController {
-	async create(req, res) {
-		const { name } = req.body
-		const genre = await Genre.create({ name })
-		return res.json(genre)
+	async create(req, res, next) {
+		try {
+			const { name } = req.body
+			const genre = await Genre.create({ name })
+			return res.json(genre)
+		}
+		catch (e) {
+			next(ApiError.badRequest(e.message))
+		}
 	}
-	async getAll(req, res) {
-		const genres = await Genre.findAll()
-		return res.json(genres)
+
+	async getAll(req, res, next) {
+		try {
+			const genres = await Genre.findAll()
+			return res.json(genres)
+		}
+		catch (e) {
+			next(ApiError.badRequest(e.message))
+		}
 	}
-	async delete(req, res) {
+
+	async delete(req, res, next) {
 		try {
 			const { id } = req.params
 			const genre = await Genre.findOne({ where: { id } })
@@ -22,7 +34,7 @@ class GenreController {
 				return res.json('Жанра нет в базе данных')
 			}
 		} catch (e) {
-			return res.json(e);
+			next(ApiError.badRequest(e.message))
 		}
 	}
 }

@@ -1,10 +1,11 @@
-const { Cart, CartBook, Book, BookInfo } = require('../models/models')
+const { Cart, CartBook, Book, BookInfo, Author } = require('../models/models')
 const tokenService = require('../service/token-service')
 const jwt = require('jsonwebtoken')
 const { Op } = require("sequelize")
+const ApiError = require('../error/ApiError')
 
 class CartController {
-	async addBook(req, res) {
+	async addBook(req, res, next) {
 		try {
 			const { id } = req.body
 			const token = req.headers.authorization.split(' ')[1]
@@ -13,11 +14,11 @@ class CartController {
 			await CartBook.create({ cartId: cart.id, bookId: id })
 			return res.json('Товар добавлен в корзину')
 		} catch (e) {
-			console.error(e)
+			next(ApiError.badRequest(e.message))
 		}
 	}
 
-	async getBook(req, res) {
+	async getBook(req, res, next) {
 		try {
 			const token = req.headers.authorization.split(' ')[1]
 			const userData = tokenService.validateAccessToken(token)
@@ -55,11 +56,11 @@ class CartController {
 
 			return res.json(cartArr)
 		} catch (e) {
-			console.error(e)
+			next(ApiError.badRequest(e.message))
 		}
 	}
 
-	async deleteBook(req, res) {
+	async deleteBook(req, res, next) {
 		try {
 			const { id } = req.params
 			const user = req.user
@@ -71,7 +72,7 @@ class CartController {
 			}
 			return res.json(`У вас нет доступа для удаления товара(${id}) из корзины, которая вам не принадлежит`)
 		} catch (e) {
-			console.error(e)
+			next(ApiError.badRequest(e.message))
 		}
 	}
 }
