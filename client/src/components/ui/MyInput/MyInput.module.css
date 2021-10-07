@@ -1,0 +1,12 @@
+.input{
+	width: 100%;
+	padding: 15px;
+	margin: 10px 2px;
+	border: 2px solid rgb(17, 252, 5);
+	box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+.input:invalid{
+	border: 2px solid rgba(245, 3, 3, 0.734);
+	box-shadow: 0 0 5px 5px rgb(245, 3, 3, 0.734);
+}

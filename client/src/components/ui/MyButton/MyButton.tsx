@@ -1,7 +1,12 @@
 import React from 'react'
 import style from './MyButton.module.css'
 
-const MyButton: React.FC = ({ children, ...props }) => {
+interface IPropsButton {
+	onClick?: React.MouseEventHandler<HTMLButtonElement>,
+	value?: string
+}
+
+const MyButton: React.FC<IPropsButton> = ({ children, ...props }) => {
 	return (
 		<button {...props} className={style.button}>
 			{children}

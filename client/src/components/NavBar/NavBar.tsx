@@ -13,7 +13,7 @@ const NavBar: React.FC = () => {
 			<NavLink to={SHOP_ROUTE} className={style.logo}>
 				<img src={logo} alt='logo' height='40px' width='40px' />
 				<div>
-					<span className={style.logoHeader}>My Books</span>
+					<span className={style.logoHeader}>BOOKSHELF</span>
 					<span>we sell books</span>
 				</div>
 			</NavLink>

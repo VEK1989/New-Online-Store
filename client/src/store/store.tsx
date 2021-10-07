@@ -8,6 +8,7 @@ const reducers = combineReducers({
 })
 
 export type RootState = ReturnType<typeof reducers>
+export type AppDispatch = typeof store.dispatch
 
 const store = createStore(reducers, applyMiddleware(thunk))
 
