@@ -1,8 +1,8 @@
-import { TUser } from "./TUser";
+import { IUser } from "./IUser";
 
 export interface TAuth {
 	isAuth: boolean,
-	user: TUser,
+	user: IUser,
 	isLoading: boolean,
 	error: string
 }
@@ -21,7 +21,7 @@ interface SetAuthAction {
 
 interface SetUserAction {
 	type: AuthActionTypes.SET_USER,
-	payload: TUser
+	payload: IUser
 }
 
 interface SetErrorAction {

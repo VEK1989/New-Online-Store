@@ -1,0 +1,21 @@
+.listGenre{
+	grid-area: GenreBar;
+}
+
+.listItem{
+	padding: 12px;
+	margin-top: 3px;
+	color: #ffffff;
+	background: rgb(138, 43, 226);
+	border: 1px solid blueviolet;
+	cursor: pointer;
+}
+
+.selected{
+	padding: 12px;
+	margin-top: 3px;
+	color: #ffffff;
+	background: rgb(59, 5, 109);
+	border: 1px solid rgb(59, 5, 109);
+	cursor: pointer;
+}

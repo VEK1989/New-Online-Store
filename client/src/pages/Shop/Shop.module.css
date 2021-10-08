@@ -1,0 +1,6 @@
+.shop{
+	display: grid;
+	grid-template-columns: 1.5fr 9fr;
+	grid-template-areas: 'GenreBar' 'Goods';
+	padding: 10px;
+}

@@ -18,8 +18,20 @@
 	color: #ffffff;
 }
 
+.error{
+	color: rgb(248, 8, 8);
+}
+
 form{
 	margin: 10px;
+}
+
+.link{
+	color: rgb(17, 252, 5);
+}
+
+.link:hover{
+	text-decoration: underline;
 }
 
 .registLink{

@@ -1,9 +1,9 @@
 import { AuthActions, AuthActionTypes, TAuth } from '../../types/auth'
-import { TUser } from '../../types/TUser'
+import { IUser } from '../../types/IUser'
 
 const initialState: TAuth = {
 	isAuth: false,
-	user: {} as TUser,
+	user: {} as IUser,
 	isLoading: false,
 	error: ''
 }

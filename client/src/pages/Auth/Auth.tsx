@@ -3,11 +3,13 @@ import { useDispatch } from 'react-redux'
 import { NavLink, useLocation } from 'react-router-dom'
 import MyButton from '../../components/ui/MyButton/MyButton'
 import MyInput from '../../components/ui/MyInput/MyInput'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { AuthActionCreator } from '../../store/action-creators/authActionCreator'
 import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../../utils/consts'
 import style from './Auth.module.css'
 
 const Auth: React.FC = () => {
+	const error = useTypedSelector(state => state.auth.error)
 	const location = useLocation()
 	const isLogin = location.pathname === LOGIN_ROUTE
 
@@ -17,7 +19,15 @@ const Auth: React.FC = () => {
 
 	const submit = (e: React.FormEvent<HTMLButtonElement>) => {
 		e.preventDefault()
-		dispatch(AuthActionCreator.login(email, password))
+		if (isLogin) {
+			dispatch(AuthActionCreator.login(email, password))
+			setEmail('')
+			setPassword('')
+		} else {
+			dispatch(AuthActionCreator.registration(email, password))
+			setEmail('')
+			setPassword('')
+		}
 	}
 
 	return (
@@ -25,14 +35,13 @@ const Auth: React.FC = () => {
 			<div className={style.formTable}>
 				<h2>{isLogin ? 'Авторизация' : 'Регистрация'}</h2>
 				<form >
-					<label>Email</label>
+					<p className={style.error}>{error}</p>
 					<MyInput
 						onChange={e => setEmail(e.target.value)}
 						value={email}
 						type='email'
 						placeholder='Введите email...'
 					/>
-					<label>Пароль</label>
 					<MyInput
 						onChange={e => setPassword(e.target.value)}
 						value={password}
@@ -42,10 +51,10 @@ const Auth: React.FC = () => {
 					<div className={style.registLink}>
 						{isLogin
 							? <div>
-								<p>Нет аккаунта? <NavLink to={REGISTRATION_ROUTE}>Зарегестрируйся!</NavLink></p>
+								<p>Нет аккаунта? <NavLink className={style.link} to={REGISTRATION_ROUTE}>Зарегестрируйся!</NavLink></p>
 							</div>
 							: <div>
-								<p>Есть аккаунт? <NavLink to={LOGIN_ROUTE}>Войдите!</NavLink></p>
+								<p>Есть аккаунт? <NavLink className={style.link} to={LOGIN_ROUTE}>Войдите!</NavLink></p>
 							</div>
 						}
 						<MyButton onClick={submit}>

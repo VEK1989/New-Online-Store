@@ -1,11 +1,14 @@
+import axios from 'axios'
+import { API_URL } from '../../http'
 import AuthService from '../../service/AuthService'
 import { AuthActions, AuthActionTypes } from '../../types/auth'
+import { AuthResponse } from '../../types/authResponse'
 import { AppDispatch } from '../store'
-import { TUser } from './../../types/TUser'
+import { IUser } from '../../types/IUser'
 
 
 export const AuthActionCreator = {
-	setUser: (user: TUser): AuthActions => ({ type: AuthActionTypes.SET_USER, payload: user }),
+	setUser: (user: IUser): AuthActions => ({ type: AuthActionTypes.SET_USER, payload: user }),
 	setIsAuth: (auth: boolean): AuthActions => ({ type: AuthActionTypes.SET_AUTH, payload: auth }),
 	setError: (error: string): AuthActions => ({ type: AuthActionTypes.SET_ERROR, payload: error }),
 	setIsLoading: (loading: boolean): AuthActions => ({ type: AuthActionTypes.SET_IS_LOADING, payload: loading }),
@@ -14,13 +17,15 @@ export const AuthActionCreator = {
 		try {
 			dispatch(AuthActionCreator.setIsLoading(true))
 			const response = await AuthService.login(email, password)
-			console.log(response)
 			localStorage.setItem('token', response.data.accessToken)
 			dispatch(AuthActionCreator.setIsAuth(true))
 			dispatch(AuthActionCreator.setUser(response.data.user))
 
 		} catch (e: any) {
-			dispatch(AuthActionCreator.setError(e.response?.data?.message))
+			dispatch(AuthActionCreator.setError(e.response?.data?.errors))
+		}
+		finally {
+			dispatch(AuthActionCreator.setIsLoading(false))
 		}
 	},
 
@@ -33,20 +38,40 @@ export const AuthActionCreator = {
 			dispatch(AuthActionCreator.setUser(response.data.user))
 
 		} catch (e: any) {
-			dispatch(AuthActionCreator.setError(e.response?.data?.message))
+			dispatch(AuthActionCreator.setError(e.response?.data?.errors))
+		}
+		finally {
+			dispatch(AuthActionCreator.setIsLoading(false))
 		}
 	},
 
 	logout: () => async (dispatch: AppDispatch) => {
 		try {
 			dispatch(AuthActionCreator.setIsLoading(true))
-			await AuthService.logout()
 			localStorage.removeItem('token')
 			dispatch(AuthActionCreator.setIsAuth(true))
-			dispatch(AuthActionCreator.setUser({} as TUser))
+			dispatch(AuthActionCreator.setUser({} as IUser))
 
 		} catch (e: any) {
-			dispatch(AuthActionCreator.setError(e.response?.data?.message))
+			dispatch(AuthActionCreator.setError(e.response?.data?.errors))
+		}
+		finally {
+			dispatch(AuthActionCreator.setIsLoading(false))
+		}
+	},
+
+	checkAuth: () => async (dispatch: AppDispatch) => {
+		try {
+			const response = await axios.get<AuthResponse>(`${API_URL}user/refresh`, { withCredentials: true })
+			localStorage.setItem('token', response.data.accessToken)
+			dispatch(AuthActionCreator.setIsAuth(true))
+			dispatch(AuthActionCreator.setUser(response.data.user))
+		}
+		catch (e: any) {
+			dispatch(AuthActionCreator.setError(e.response?.data?.errors))
+		}
+		finally {
+			dispatch(AuthActionCreator.setIsLoading(false))
 		}
 	}
 }
