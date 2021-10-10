@@ -5,7 +5,8 @@ import { privateRoutes, publicRoutes } from '../../router/route'
 import { SHOP_ROUTE } from '../../utils/consts'
 
 const AppRouter: React.FC = () => {
-	const isAuth = useTypedSelector(state => state.auth)
+	const isAuth = useTypedSelector(state => state.auth.isAuth)
+
 	return (
 		<Switch>
 			{

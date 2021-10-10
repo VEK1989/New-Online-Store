@@ -2,11 +2,13 @@ import { applyMiddleware, combineReducers, createStore } from 'redux'
 import thunk from 'redux-thunk'
 import { authReducer } from './reducers/authReducer'
 import { genreAuthorReducer } from './reducers/genreAuthorReducer'
+import { goodsReducer } from './reducers/goodsReducer'
 
 
 const reducers = combineReducers({
 	auth: authReducer,
-	genreAuthor: genreAuthorReducer
+	genreAuthor: genreAuthorReducer,
+	goods: goodsReducer
 })
 
 export type RootState = ReturnType<typeof reducers>

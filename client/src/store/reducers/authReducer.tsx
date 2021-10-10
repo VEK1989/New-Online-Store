@@ -1,14 +1,14 @@
-import { AuthActions, AuthActionTypes, TAuth } from '../../types/auth'
+import { AuthActions, AuthActionTypes, IAuth } from '../../types/auth'
 import { IUser } from '../../types/IUser'
 
-const initialState: TAuth = {
+const initialState: IAuth = {
 	isAuth: false,
 	user: {} as IUser,
 	isLoading: false,
 	error: ''
 }
 
-export const authReducer = (state = initialState, action: AuthActions): TAuth => {
+export const authReducer = (state = initialState, action: AuthActions): IAuth => {
 	switch (action.type) {
 		case AuthActionTypes.SET_AUTH:
 			return {

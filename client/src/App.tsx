@@ -1,7 +1,6 @@
-import { Provider, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import AppRouter from './components/AppRouter/AppRouter'
-import store from './store/store'
 import style from './App.module.css'
 import NavBar from './components/NavBar/NavBar'
 import { useEffect } from 'react'

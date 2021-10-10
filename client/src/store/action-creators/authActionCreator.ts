@@ -49,7 +49,7 @@ export const AuthActionCreator = {
 		try {
 			dispatch(AuthActionCreator.setIsLoading(true))
 			localStorage.removeItem('token')
-			dispatch(AuthActionCreator.setIsAuth(true))
+			dispatch(AuthActionCreator.setIsAuth(false))
 			dispatch(AuthActionCreator.setUser({} as IUser))
 
 		} catch (e: any) {

@@ -1,6 +1,6 @@
 import { IUser } from "./IUser";
 
-export interface TAuth {
+export interface IAuth {
 	isAuth: boolean,
 	user: IUser,
 	isLoading: boolean,

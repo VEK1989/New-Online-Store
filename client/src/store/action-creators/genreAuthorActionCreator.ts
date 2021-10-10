@@ -22,7 +22,7 @@ export const GenreAuthorActionCreator = {
 
 	loadingAuthor: () => async (dispatch: AppDispatch) => {
 		try {
-			const response = await GenreAuthorService.getGenre()
+			const response = await GenreAuthorService.getAthor()
 			dispatch(GenreAuthorActionCreator.setAuthor(response.data))
 		}
 		catch (e: any) {
