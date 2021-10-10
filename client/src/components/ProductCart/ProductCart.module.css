@@ -1,0 +1,18 @@
+.productCart{
+	width: 200px;
+	height: 280px;
+	margin: 5px;
+	box-shadow: 5px 5px 5px 5px #000000c7;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.productInfo{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
