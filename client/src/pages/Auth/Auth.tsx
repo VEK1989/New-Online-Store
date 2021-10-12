@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useHistory } from 'react-router-dom'
 import MyButton from '../../components/ui/MyButton/MyButton'
 import MyInput from '../../components/ui/MyInput/MyInput'
 import { useTypedSelector } from '../../hooks/useTypedSelector'

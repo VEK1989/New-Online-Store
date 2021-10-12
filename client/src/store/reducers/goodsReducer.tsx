@@ -1,9 +1,11 @@
 import { GoodsActions, GoodsActionTypes, IGoodsList } from '../../types/goods'
+import { IProduct } from '../../types/IProduct'
 
 const initialState: IGoodsList = {
 	goods: [],
 	isLoading: false,
-	error: ''
+	error: '',
+	product: {} as IProduct
 }
 
 
@@ -26,6 +28,12 @@ export const goodsReducer = (state = initialState, action: GoodsActions): IGoods
 				...state,
 				error: action.payload,
 				isLoading: false
+			}
+
+		case GoodsActionTypes.SET_PRODUCT:
+			return {
+				...state,
+				product: action.payload
 			}
 
 		default:

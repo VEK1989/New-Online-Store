@@ -1,16 +1,19 @@
-import { IGoods } from "./IGoods";
+import { IProduct } from './IProduct'
+import { IGoods } from "./IGoods"
 
 
 export interface IGoodsList {
 	goods: IGoods[],
 	isLoading: boolean,
-	error: string
+	error: string,
+	product: IProduct
 }
 
 export enum GoodsActionTypes {
 	SET_GOODS = 'SET_GOODS',
 	SET_IS_LOADING = 'SET_IS_LOADING',
-	SET_ERROR = 'SET_ERROR'
+	SET_ERROR = 'SET_ERROR',
+	SET_PRODUCT = 'SET_PRODUCT'
 }
 
 interface SetGoodsAction {
@@ -28,8 +31,14 @@ interface SetErrorAction {
 	payload: string
 }
 
+interface SetProductAction {
+	type: GoodsActionTypes.SET_PRODUCT,
+	payload: IProduct
+}
+
 export type GoodsActions =
 	SetGoodsAction |
 	SetIsLoadingAction |
-	SetErrorAction
+	SetErrorAction |
+	SetProductAction
 

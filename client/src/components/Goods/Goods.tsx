@@ -19,6 +19,7 @@ const Goods: React.FC = () => {
 				goods.map(product => {
 					return <ProductCart
 						key={product.id}
+						id={product.id}
 						name={product.name}
 						price={product.price}
 						img={product.img}
