@@ -5,9 +5,7 @@
 .listItem{
 	padding: 12px;
 	margin-top: 3px;
-	color: #ffffff;
-	background: rgb(138, 43, 226);
-	border: 1px solid blueviolet;
+	border-bottom: 1px solid blueviolet;
 	cursor: pointer;
 }
 

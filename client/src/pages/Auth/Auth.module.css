@@ -9,13 +9,13 @@
 	width: 600px;
 	height: 350px;
 	padding: 40px;
+	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background: linear-gradient(to bottom right, rgb(11, 1, 100), rgb(141, 1, 50));
+	background: linear-gradient(to bottom right, rgb(89, 89, 89), rgb(253, 251, 252));
 	box-shadow: 5px 5px 5px #000000c7;
-	color: #ffffff;
 }
 
 .error{
@@ -27,7 +27,7 @@ form{
 }
 
 .link{
-	color: rgb(17, 252, 5);
+	color: rgb(161, 5, 252);
 }
 
 .link:hover{

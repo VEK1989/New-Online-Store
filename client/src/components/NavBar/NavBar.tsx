@@ -24,7 +24,7 @@ const NavBar: React.FC = () => {
 				<img src={logo} alt='logo' height='40px' width='40px' />
 				<div>
 					<span className={style.logoHeader}>BOOKSHELF</span>
-					<span>we sell books</span>
+					<span>your favorite</span>
 				</div>
 			</NavLink>
 			{

@@ -1,3 +1,5 @@
 .goods{
 	grid-area: Goods;
+	display: flex;
+	flex-wrap: wrap;
 }

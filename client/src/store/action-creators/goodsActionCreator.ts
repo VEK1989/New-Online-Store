@@ -12,7 +12,7 @@ export const GoodsActionCreator = {
 		try {
 			dispatch(GoodsActionCreator.setIsLoading(true))
 			const response = await GoodsService.fetchGoods()
-			dispatch(GoodsActionCreator.setGoods(response.data.raws))
+			dispatch(GoodsActionCreator.setGoods(response.data.rows))
 		}
 		catch (e: any) {
 			dispatch(GoodsActionCreator.setError(e.response?.data?.errors))

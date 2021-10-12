@@ -1,13 +1,14 @@
 .button{
 	padding: 10px;
 	margin: 5px;
-	background-color: rgb(17, 252, 5);
+	background-color: rgb(161, 5, 252);
 	cursor: pointer;
 	color: #ffffff;
-	box-shadow: 5px 5px 5px #000000c7;
+	border-radius: 10px;
+	/* box-shadow: 5px 5px 5px #000000c7; */
 	transition: cubic-bezier(1, 0, 0, 1) .3s all;
 }
 
 .button:hover{
-	background-color: rgb(12, 179, 3);
+	background-color: rgb(89, 6, 138);
 }

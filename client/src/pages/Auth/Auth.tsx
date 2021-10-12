@@ -51,7 +51,7 @@ const Auth: React.FC = () => {
 					<div className={style.registLink}>
 						{isLogin
 							? <div>
-								<p>Нет аккаунта? <NavLink className={style.link} to={REGISTRATION_ROUTE}>Зарегестрируйся!</NavLink></p>
+								<p>Нет аккаунта? <NavLink className={style.link} to={REGISTRATION_ROUTE}>Зарегестрируйтесь!</NavLink></p>
 							</div>
 							: <div>
 								<p>Есть аккаунт? <NavLink className={style.link} to={LOGIN_ROUTE}>Войдите!</NavLink></p>
