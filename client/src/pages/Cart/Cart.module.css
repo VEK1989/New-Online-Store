@@ -1,3 +1,7 @@
+.cart{
+	padding: 20px;
+}
+
 .emptyCart{
 	padding: 30px;
 	display: flex;
@@ -12,4 +16,20 @@
 	max-width: 600px;
 	font-size: 19px;
 	text-align: center;
+}
+
+.productItem{
+	padding: 5px;
+	background: rgba(218, 215, 215, 0.631);
+	border: 1px solid #ffffff;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.grupItem{
+	width: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }

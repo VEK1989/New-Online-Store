@@ -1,3 +1,4 @@
+import { cartReducer } from './reducers/cartReducer'
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import thunk from 'redux-thunk'
 import { authReducer } from './reducers/authReducer'
@@ -8,7 +9,8 @@ import { goodsReducer } from './reducers/goodsReducer'
 const reducers = combineReducers({
 	auth: authReducer,
 	genreAuthor: genreAuthorReducer,
-	goods: goodsReducer
+	goods: goodsReducer,
+	cart: cartReducer
 })
 
 export type RootState = ReturnType<typeof reducers>
