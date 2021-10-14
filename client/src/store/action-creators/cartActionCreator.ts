@@ -21,5 +21,31 @@ export const CartActionCreator = {
 		finally {
 			dispatch(CartActionCreator.setCartIsLoading(false))
 		}
+	},
+
+	putProductInMyCart: (id: number) => async (dispatch: AppDispatch) => {
+		try {
+			dispatch(CartActionCreator.setCartIsLoading(true))
+			await CartService.putProductInCart(id)
+		}
+		catch (e: any) {
+			dispatch(CartActionCreator.setError(e.response?.data?.errors))
+		}
+		finally {
+			dispatch(CartActionCreator.setCartIsLoading(false))
+		}
+	},
+
+	deleteProductFromCart: (id: number) => async (dispatch: AppDispatch) => {
+		try {
+			dispatch(CartActionCreator.setCartIsLoading(true))
+			await CartService.deleteFromCart(id)
+		}
+		catch (e: any) {
+			dispatch(CartActionCreator.setError(e.response?.data?.errors))
+		}
+		finally {
+			dispatch(CartActionCreator.setCartIsLoading(false))
+		}
 	}
 }

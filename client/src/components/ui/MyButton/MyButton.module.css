@@ -5,10 +5,18 @@
 	cursor: pointer;
 	color: #ffffff;
 	border-radius: 10px;
-	/* box-shadow: 5px 5px 5px #000000c7; */
 	transition: cubic-bezier(1, 0, 0, 1) .3s all;
 }
 
 .button:hover{
 	background-color: rgb(89, 6, 138);
+}
+
+.disable{
+	padding: 10px;
+	margin: 5px;
+	background-color: rgb(161, 5, 252);
+	color: #ffffff;
+	border-radius: 10px;
+	background: rgba(161, 5, 252, 0.419);
 }

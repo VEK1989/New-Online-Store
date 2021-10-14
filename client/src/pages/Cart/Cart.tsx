@@ -13,6 +13,15 @@ const Cart: React.FC = () => {
 	const dispatch = useDispatch()
 	const cart = useTypedSelector(state => state.cart.cart)
 
+	const deleteProduct = (id: number) => {
+		dispatch(CartActionCreator.deleteProductFromCart(id))
+		localStorage.removeItem(`${id}`)
+		const newCart = cart.filter(item => {
+			return item.id !== id
+		})
+		dispatch(CartActionCreator.setCart(newCart))
+	}
+
 	useEffect(() => {
 		dispatch(CartActionCreator.getProductListFromCart())
 	}, [])
@@ -20,16 +29,16 @@ const Cart: React.FC = () => {
 	return (
 		<div className={style.cart}>
 			{
-				cart
+				cart.length > 0
 					? <div>{cart.map(product => {
 						return <div key={product.id} className={style.productItem}>
 							<div className={style.grupItem}>
-								<img src={`http://localhost:5000/${product.img}`} alt='product picture' width='20px' height='40px' />
+								<img className={style.productImg} src={`http://localhost:5000/${product.img}`} alt='product picture' width='20px' height='40px' />
 								<span>{product.name}</span>
 							</div>
-							<div className={style.grupItem}>
+							<div className={style.productPrice}>
 								<span>{product.price} &#8381;</span>
-								<MyButton>X</MyButton>
+								<MyButton onClick={() => deleteProduct(product.id)}>X</MyButton>
 							</div>
 						</div>
 					})}</div>

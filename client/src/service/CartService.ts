@@ -8,11 +8,11 @@ export default class CartService {
 		return apiInstance.get<ICart[]>('cart')
 	}
 
-	static async putProductInCart(): Promise<AxiosResponse<string>> {
-		return apiInstance.post<string>('cart')
+	static async putProductInCart(id: number): Promise<AxiosResponse<string>> {
+		return apiInstance.post<string>('cart', { id: `${id}` })
 	}
 
-	static async deleteProductFromCart(id: number): Promise<AxiosResponse<string>> {
+	static async deleteFromCart(id: number): Promise<AxiosResponse<string>> {
 		return apiInstance.delete<string>(`cart/${id}`)
 	}
 }

@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import { PRODUCT_ROUTE } from '../../utils/consts'
 import MyButton from '../ui/MyButton/MyButton'
 import style from './ProductCart.module.css'
 import star from '../../images/star.png'
+import { useDispatch } from 'react-redux'
+import { CartActionCreator } from '../../store/action-creators/cartActionCreator'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
 
 interface ProductProps {
 	id: number
@@ -15,6 +18,22 @@ interface ProductProps {
 
 const ProductCart: React.FC<ProductProps> = ({ id, name, price, rating, img }) => {
 	const history = useHistory()
+	const dispatch = useDispatch()
+	const [isInCart, setIsInCart] = useState(false)
+	const cartLoading = useTypedSelector(state => state.cart.isCartLoading)
+
+	useEffect(() => {
+		const item = localStorage.getItem(`${id}`)
+		if (item) {
+			setIsInCart(true)
+		}
+	}, [])
+
+	const inCart = (id: number) => {
+		dispatch(CartActionCreator.putProductInMyCart(id))
+		localStorage.setItem(`${id}`, `${name}`)
+		setIsInCart(true)
+	}
 
 	return (
 		<div className={style.productCart}>
@@ -37,7 +56,11 @@ const ProductCart: React.FC<ProductProps> = ({ id, name, price, rating, img }) =
 						<img src={star} alt='star' height='18px' width='18px' />
 					</div>
 				</div>
-				<MyButton>В корзину</MyButton>
+				{
+					isInCart
+						? <MyButton disabled > &#10004; В корзине</MyButton>
+						: <MyButton onClick={() => inCart(id)}>В корзину</MyButton>
+				}
 			</div>
 		</div>
 	);

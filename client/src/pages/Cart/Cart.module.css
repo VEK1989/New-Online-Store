@@ -28,7 +28,17 @@
 }
 
 .grupItem{
-	width: 100px;
+	width: 350px;
+	display: flex;
+	align-items: center;
+}
+
+.productImg{
+	margin-right: 20px;
+}
+
+.productPrice{
+	width: 90px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
