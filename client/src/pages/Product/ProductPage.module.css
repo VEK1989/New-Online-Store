@@ -6,4 +6,33 @@
 .description{
 	display: flex;
 	justify-content: space-around;
+	margin: 0 0 20px;
+}
+
+.properties{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.price{
+	display: block;
+	font-size: 18px;
+	margin: 12px 0px;
+}
+
+.ratingBlock{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.ratingValue{
+	margin-right: 5px;
+	width: 30px;
+	text-align: center;
+	font-size: 19px;
+	border: 1px solid #f1a545;
+	background: #f1a545;
 }

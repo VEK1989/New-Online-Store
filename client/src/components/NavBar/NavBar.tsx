@@ -20,6 +20,7 @@ const NavBar: React.FC = () => {
 	const logout = () => {
 		dispatch(AuthActionCreator.logout())
 	}
+
 	return (
 		<header className={style.header} >
 			<NavLink to={SHOP_ROUTE} className={style.logo}>
@@ -38,7 +39,7 @@ const NavBar: React.FC = () => {
 						<MyButton onClick={logout}>Выйти</MyButton>
 					</div>
 					: <div>
-						<MyButton onClick={() => history.push(CART_ROUTE)}>Корзина</MyButton>
+						<MyButton onClick={() => history.push(LOGIN_ROUTE)}>Корзина</MyButton>
 						<MyButton onClick={() => history.push(LOGIN_ROUTE)}>Авторизация</MyButton>
 					</div>
 			}
