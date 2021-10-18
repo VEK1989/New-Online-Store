@@ -18,28 +18,16 @@
 	text-align: center;
 }
 
-.productItem{
-	padding: 5px;
-	background: rgba(218, 215, 215, 0.631);
-	border: 1px solid #ffffff;
+.line{
+	margin: 20px 0px;
+	width: 100%;
+	border-bottom: 1px solid rgb(14, 13, 13);
+}
+
+.totalPrice{
+	padding: 15px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-}
-
-.grupItem{
-	width: 350px;
-	display: flex;
-	align-items: center;
-}
-
-.productImg{
-	margin-right: 20px;
-}
-
-.productPrice{
-	width: 90px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	background: rgba(218, 215, 215, 0.631);
 }

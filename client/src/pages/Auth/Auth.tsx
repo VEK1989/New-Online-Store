@@ -1,21 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { NavLink, useLocation, useHistory } from 'react-router-dom'
 import MyButton from '../../components/ui/MyButton/MyButton'
 import MyInput from '../../components/ui/MyInput/MyInput'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { AuthActionCreator } from '../../store/action-creators/authActionCreator'
-import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../../utils/consts'
+import { LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from '../../utils/consts'
 import style from './Auth.module.css'
 
 const Auth: React.FC = () => {
 	const error = useTypedSelector(state => state.auth.error)
+	const isAuth = useTypedSelector(state => state.auth.isAuth)
 	const location = useLocation()
 	const isLogin = location.pathname === LOGIN_ROUTE
+	const history = useHistory()
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const dispatch = useDispatch()
+
+	useEffect(() => {
+		if (isAuth) {
+			history.push(SHOP_ROUTE)
+		}
+	}, [isAuth])
 
 	const submit = (e: React.FormEvent<HTMLButtonElement>) => {
 		e.preventDefault()

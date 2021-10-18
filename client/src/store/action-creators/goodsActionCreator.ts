@@ -28,7 +28,6 @@ export const GoodsActionCreator = {
 		try {
 			dispatch(GoodsActionCreator.setIsLoading(true))
 			const response = await GoodsService.fetchProduct(id)
-			console.log(response)
 			dispatch(GoodsActionCreator.setProduct(response.data))
 		}
 		catch (e: any) {

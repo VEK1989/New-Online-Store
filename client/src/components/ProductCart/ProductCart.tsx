@@ -20,10 +20,13 @@ const ProductCart: React.FC<ProductProps> = ({ id, name, price, rating, img }) =
 	const history = useHistory()
 	const dispatch = useDispatch()
 	const [isInCart, setIsInCart] = useState(false)
-	const cartLoading = useTypedSelector(state => state.cart.isCartLoading)
+	const cart = useTypedSelector(state => state.cart.cart)
+	let countGoods = useTypedSelector(state => state.cart.countGoods)
 
 	useEffect(() => {
-		const item = localStorage.getItem(`${id}`)
+		const item = cart.find(item => {
+			return item.id == id
+		})
 		if (item) {
 			setIsInCart(true)
 		}
@@ -31,7 +34,7 @@ const ProductCart: React.FC<ProductProps> = ({ id, name, price, rating, img }) =
 
 	const inCart = (id: number) => {
 		dispatch(CartActionCreator.putProductInMyCart(id))
-		localStorage.setItem(`${id}`, `${name}`)
+		dispatch(CartActionCreator.setCountGoods(countGoods += 1))
 		setIsInCart(true)
 	}
 

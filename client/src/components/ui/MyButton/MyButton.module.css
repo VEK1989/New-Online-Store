@@ -12,11 +12,16 @@
 	background-color: rgb(89, 6, 138);
 }
 
+.button:active{
+	background: #01eeff;
+	color: rgb(17, 17, 17);
+}
+
 .disable{
 	padding: 10px;
 	margin: 5px;
 	background-color: rgb(161, 5, 252);
-	color: #ffffff;
+	color: #f3efef;
 	border-radius: 10px;
 	background: rgba(161, 5, 252, 0.419);
 }

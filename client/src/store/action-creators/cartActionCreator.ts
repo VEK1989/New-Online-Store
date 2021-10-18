@@ -8,12 +8,15 @@ export const CartActionCreator = {
 	setCart: (cart: ICart[]): CartActions => ({ type: CartActionTypes.SET_CART, payload: cart }),
 	setCartIsLoading: (loading: boolean): CartActions => ({ type: CartActionTypes.SET_CART_IS_LOADING, payload: loading }),
 	setError: (error: string): CartActions => ({ type: CartActionTypes.SET_CART_ERROR, payload: error }),
+	setCountGoods: (countGoods: number): CartActions => ({ type: CartActionTypes.SET_COUNT_GOODS, payload: countGoods }),
+	setAllCartPrice: (allCartPrice: number): CartActions => ({ type: CartActionTypes.SET_ALL_CART_PRICE, payload: allCartPrice }),
 
 	getProductListFromCart: () => async (dispatch: AppDispatch) => {
 		try {
 			dispatch(CartActionCreator.setCartIsLoading(true))
 			const response = await CartService.fetchCart()
 			dispatch(CartActionCreator.setCart(response.data))
+			dispatch(CartActionCreator.setCountGoods(response.data.length))
 		}
 		catch (e: any) {
 			dispatch(CartActionCreator.setError(e.response?.data?.errors))

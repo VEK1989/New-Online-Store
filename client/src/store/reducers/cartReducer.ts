@@ -3,7 +3,9 @@ import { CartActions, CartActionTypes, ICartList } from '../../types/cart'
 const initialState: ICartList = {
 	cart: [],
 	isCartLoading: false,
-	cartError: ''
+	cartError: '',
+	countGoods: 0,
+	allCartPrice: 0
 }
 
 export const cartReducer = (state = initialState, action: CartActions): ICartList => {
@@ -24,6 +26,18 @@ export const cartReducer = (state = initialState, action: CartActions): ICartLis
 			return {
 				...state,
 				cartError: action.payload
+			}
+
+		case CartActionTypes.SET_COUNT_GOODS:
+			return {
+				...state,
+				countGoods: action.payload
+			}
+
+		case CartActionTypes.SET_ALL_CART_PRICE:
+			return {
+				...state,
+				allCartPrice: action.payload
 			}
 
 		default:

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { GoodsActionCreator } from '../../store/action-creators/goodsActionCreator';
-import ProductCart from '../ProductCart/ProductCart';
+import { useDispatch } from 'react-redux'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
+import { GoodsActionCreator } from '../../store/action-creators/goodsActionCreator'
+import ProductCart from '../ProductCart/ProductCart'
 import style from './Goods.module.css'
 
 const Goods: React.FC = () => {
