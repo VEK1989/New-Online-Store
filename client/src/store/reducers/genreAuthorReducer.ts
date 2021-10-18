@@ -4,7 +4,8 @@ const initialState: TGenreAuth = {
 	author: [],
 	genre: [],
 	error: '',
-	selectedGenre: []
+	selectedGenre: [],
+	selectedAuthor: []
 }
 
 export const genreAuthorReducer = (state = initialState, action: GenreAuthorActions): TGenreAuth => {
@@ -31,6 +32,12 @@ export const genreAuthorReducer = (state = initialState, action: GenreAuthorActi
 			return {
 				...state,
 				selectedGenre: [action.payload]
+			}
+
+		case GenreAuthorActionTypes.SET_SELECTED_AUTHOR:
+			return {
+				...state,
+				selectedAuthor: [action.payload]
 			}
 
 		default:

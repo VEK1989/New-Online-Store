@@ -7,11 +7,21 @@ import style from './Goods.module.css'
 
 const Goods: React.FC = () => {
 	const goods = useTypedSelector(state => state.goods.goods)
+	const selectedGenre = useTypedSelector(state => state.genreAuthor.selectedGenre)
+	const selectedAuthor = useTypedSelector(state => state.genreAuthor.selectedAuthor)
+	const page = useTypedSelector(state => state.goods.page)
+	const limit = useTypedSelector(state => state.goods.limit)
+
+
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		dispatch(GoodsActionCreator.getAllGoods())
+		dispatch(GoodsActionCreator.getAllGoods(null, null, limit, page))
 	}, [])
+
+	useEffect(() => {
+		dispatch(GoodsActionCreator.getAllGoods(selectedGenre[0]?.id, selectedAuthor[0]?.id, limit, page))
+	}, [page, selectedGenre, selectedAuthor])
 
 	return (
 		<div className={style.goods}>

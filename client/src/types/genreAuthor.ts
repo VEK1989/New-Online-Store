@@ -4,14 +4,16 @@ export interface TGenreAuth {
 	author: IAuthor[],
 	genre: IGenre[],
 	error: string,
-	selectedGenre: IGenre[]
+	selectedGenre: IGenre[],
+	selectedAuthor: IAuthor[]
 }
 
 export enum GenreAuthorActionTypes {
 	SET_GENRE = 'SET_GENRE',
 	SET_AUTHOR = 'SET_AUTHOR',
 	SET_ERROR = 'SET_ERROR',
-	SET_SELECTED_GENRE = 'SET_SELECTED_GENRE'
+	SET_SELECTED_GENRE = 'SET_SELECTED_GENRE',
+	SET_SELECTED_AUTHOR = 'SET_SELECTED_AUTHOR'
 }
 
 interface SetGenreAction {
@@ -34,8 +36,14 @@ interface SetSelectedGenreAction {
 	payload: IGenre
 }
 
+interface SetSelectedAuthor {
+	type: GenreAuthorActionTypes.SET_SELECTED_AUTHOR,
+	payload: IAuthor
+}
+
 export type GenreAuthorActions =
 	SetGenreAction |
 	SetAuthorAction |
 	SetErrorAction |
-	SetSelectedGenreAction
+	SetSelectedGenreAction |
+	SetSelectedAuthor

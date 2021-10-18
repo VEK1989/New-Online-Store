@@ -1,0 +1,29 @@
+.pagination{
+	display: flex;
+	align-items: center;
+}
+
+.page{
+	margin: 3px;
+	padding: 5px;
+	border: 1px solid blueviolet;
+	border-radius: 5px;
+}
+
+.activePage{
+	margin: 3px;
+	padding: 5px;
+	border: 1px solid blueviolet;
+	border-radius: 5px;
+	background: blueviolet;
+	cursor: pointer;
+}
+
+.page:hover{
+	background: blueviolet;
+	cursor: pointer;
+}
+
+.page:active{
+	background: cadetblue;
+}

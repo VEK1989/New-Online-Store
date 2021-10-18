@@ -9,6 +9,7 @@ export const GenreAuthorActionCreator = {
 	setGenre: (genre: IGenre[]): GenreAuthorActions => ({ type: GenreAuthorActionTypes.SET_GENRE, payload: genre }),
 	setError: (error: string): GenreAuthorActions => ({ type: GenreAuthorActionTypes.SET_ERROR, payload: error }),
 	setSelectedGenre: (genre: IGenre): GenreAuthorActions => ({ type: GenreAuthorActionTypes.SET_SELECTED_GENRE, payload: genre }),
+	setSelectedAuthor: (author: IAuthor): GenreAuthorActions => ({ type: GenreAuthorActionTypes.SET_SELECTED_AUTHOR, payload: author }),
 
 	loadingGenre: () => async (dispatch: AppDispatch) => {
 		try {

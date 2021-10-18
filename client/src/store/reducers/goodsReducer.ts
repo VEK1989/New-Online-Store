@@ -5,7 +5,10 @@ const initialState: IGoodsList = {
 	goods: [],
 	isLoading: false,
 	error: '',
-	product: {} as IProduct
+	product: {} as IProduct,
+	page: 1,
+	totalCount: 0,
+	limit: 4
 }
 
 
@@ -34,6 +37,24 @@ export const goodsReducer = (state = initialState, action: GoodsActions): IGoods
 			return {
 				...state,
 				product: action.payload
+			}
+
+		case GoodsActionTypes.SET_PAGE:
+			return {
+				...state,
+				page: action.payload
+			}
+
+		case GoodsActionTypes.SET_TOTAL_COUNT:
+			return {
+				...state,
+				totalCount: action.payload
+			}
+
+		case GoodsActionTypes.SET_LIMIT:
+			return {
+				...state,
+				limit: action.payload
 			}
 
 		default:
