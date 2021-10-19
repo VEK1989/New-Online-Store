@@ -20,11 +20,11 @@ const Goods: React.FC = () => {
 	}, [])
 
 	useEffect(() => {
-		dispatch(GoodsActionCreator.getAllGoods(selectedGenre[0]?.id, selectedAuthor[0]?.id, limit, page))
+		dispatch(GoodsActionCreator.getAllGoods(selectedAuthor[0]?.id, selectedGenre[0]?.id, limit, page))
 	}, [page, selectedGenre, selectedAuthor])
 
 	return (
-		<div className={style.goods}>
+		<main className={style.goods}>
 			{
 				goods.map(product => {
 					return <ProductCart
@@ -37,7 +37,7 @@ const Goods: React.FC = () => {
 					/>
 				})
 			}
-		</div>
+		</main>
 	);
 };
 

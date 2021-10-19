@@ -8,7 +8,7 @@ const initialState: IGoodsList = {
 	product: {} as IProduct,
 	page: 1,
 	totalCount: 0,
-	limit: 4
+	limit: 12
 }
 
 

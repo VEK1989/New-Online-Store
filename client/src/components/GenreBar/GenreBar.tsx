@@ -11,6 +11,7 @@ const GenreBar: React.FC = () => {
 	const genres = useTypedSelector(state => state.genreAuthor.genre)
 	const selectedGenre = useTypedSelector(state => state.genreAuthor.selectedGenre)
 	const page = useTypedSelector(state => state.goods.page)
+	const limit = useTypedSelector(state => state.goods.limit)
 
 	useEffect(() => {
 		dispatch(GenreAuthorActionCreator.loadingGenre())
@@ -22,31 +23,35 @@ const GenreBar: React.FC = () => {
 		dispatch(GoodsActionCreator.setPage(1))
 	}
 
-	// const selectAllGenre = () => {
-	// 	dispatch(GoodsActionCreator.getAllGoods(null, null, 4, page))
-	// 	dispatch(GoodsActionCreator.setPage(1))
-	// }
+	const selectAllGenre = () => {
+		dispatch(GenreAuthorActionCreator.setSelectedGenre(selectedGenre[1]))
+		dispatch(GoodsActionCreator.getAllGoods(null, null, limit, page))
+		dispatch(GoodsActionCreator.setPage(1))
+	}
 
 	return (
-		<ul className={style.listGenre}>
-			{/* <li
-				onClick={() => selectAllGenre()}
-				className={style.listItem}
-			>
-				Все жанры
-			</li> */}
-			{
-				genres.map(genre => {
-					return <li
-						onClick={() => selectGenre(genre)}
-						key={genre.id}
-						className={selectedGenre[0]?.id === genre.id ? style.selected : style.listItem}
-					>
-						{genre.name}
-					</li>
-				})
-			}
-		</ul>
+		<nav>
+			<h2>Категории:</h2>
+			<ul className={style.listGenre}>
+				<li
+					onClick={() => selectAllGenre()}
+					className={!selectedGenre[0] ? style.selected : style.listItem}
+				>
+					Все жанры
+				</li>
+				{
+					genres.map(genre => {
+						return <li
+							onClick={() => selectGenre(genre)}
+							key={genre.id}
+							className={selectedGenre[0]?.id === genre.id ? style.selected : style.listItem}
+						>
+							{genre.name}
+						</li>
+					})
+				}
+			</ul>
+		</nav>
 	);
 };
 

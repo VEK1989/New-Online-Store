@@ -1,4 +1,5 @@
 .shop{
+	height: 85vh;
 	padding: 30px;
 	display: grid;
 	gap: 70px;

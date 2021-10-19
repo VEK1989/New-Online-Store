@@ -1,6 +1,8 @@
 .pagination{
+	width: 180vh;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 
 .page{
@@ -26,4 +28,8 @@
 
 .page:active{
 	background: cadetblue;
+}
+
+.points{
+	margin: 0px 10px;
 }

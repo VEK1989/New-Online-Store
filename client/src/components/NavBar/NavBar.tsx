@@ -8,6 +8,7 @@ import { ADMIN_ROUTE, CART_ROUTE, LOGIN_ROUTE, SHOP_ROUTE } from '../../utils/co
 import { useDispatch } from 'react-redux'
 import { AuthActionCreator } from '../../store/action-creators/authActionCreator'
 import { CartActionCreator } from '../../store/action-creators/cartActionCreator'
+import SearchInput from '../SearchInput/SearchInput'
 
 const NavBar: React.FC = () => {
 	const isAuth = useTypedSelector(state => state.auth.isAuth)
@@ -35,6 +36,7 @@ const NavBar: React.FC = () => {
 					<span>your favorite</span>
 				</div>
 			</NavLink>
+			<SearchInput />
 			{
 				isAuth
 					? <div className={style.buttons}>
