@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { GoodsActionCreator } from '../../store/action-creators/goodsActionCreator'

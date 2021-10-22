@@ -1,0 +1,11 @@
+.goodsTable{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 10px;
+	align-items: center;
+	text-align: center;
+	border: 1px solid gray;
+}
