@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import AdminCategories from '../../components/AdminCategories/AdminCategories';
-import AdminGoods from '../../components/AdminGoods/AdminGoods';
+import AdminCategories from '../../components/AdminCategories/AdminCategories'
+import AdminGoods from '../../components/AdminGoods/AdminGoods'
 import style from './Admin.module.css'
 
 const Admin: React.FC = () => {

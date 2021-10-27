@@ -1,0 +1,23 @@
+.open{
+	height: 100%;
+	display: block;
+	position: fixed;
+	bottom: 0;
+	min-width: 1280px;
+	background: rgba(0, 0, 0, 0.2);
+	backdrop-filter: blur(10px);
+}
+
+.close{
+	height: 0;
+	display: none;
+}
+
+.modalWrapper{
+	max-width: 600px;
+	margin: 0 auto;
+	background: rgb(255, 255, 255);
+	margin-top: 15%;
+	padding: 15px;
+	border-radius: 15px;
+}

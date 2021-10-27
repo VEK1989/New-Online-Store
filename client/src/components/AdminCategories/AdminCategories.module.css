@@ -1,9 +1,14 @@
 .genreAuthor{
+	width: 100%;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 }
 
 .table{
-	width: 49%;
 	border-collapse: collapse;
+	width: 100%;
+}
+
+.categoriesItem{
+	width: 49%;
 }

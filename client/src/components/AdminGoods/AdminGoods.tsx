@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
+import ModalGoods from '../Modals/ModalGoods/ModalGoods'
+import MyButton from '../ui/MyButton/MyButton'
 import style from './AdminGoods.module.css'
 
 const AdminGoods: React.FC = () => {
 	const goods = useTypedSelector(state => state.goods.goods)
 
+	const [visible, setVisible] = useState(false)
+
 	return (
 		<div>
+			<MyButton onClick={() => setVisible(true)}>Добавить товар</MyButton>
 			<table className={style.goodsTable}>
 				<tbody>
 					<tr>
@@ -31,6 +36,10 @@ const AdminGoods: React.FC = () => {
 					}
 				</tbody>
 			</table>
+			<ModalGoods
+				visible={visible}
+				onHide={() => setVisible(false)}
+			/>
 		</div>
 	);
 };
