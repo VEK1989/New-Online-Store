@@ -5,6 +5,7 @@ import style from './App.module.css'
 import NavBar from './components/NavBar/NavBar'
 import { useEffect } from 'react'
 import { AuthActionCreator } from './store/action-creators/authActionCreator'
+import Footer from './components/Footer/Footer'
 
 const App: React.FC = () => {
   const dispatch = useDispatch()
@@ -20,6 +21,7 @@ const App: React.FC = () => {
       <div className={style.wrapper}>
         <NavBar />
         <AppRouter />
+        <Footer />
       </div>
     </BrowserRouter>
   );

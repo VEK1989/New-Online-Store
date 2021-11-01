@@ -5,11 +5,10 @@
 
 .autocomplete{
 	position: absolute;
-    top: 47px;
-    left: 10px;
+    top: 48px;
+    left: 14px;
     width: 95%;
 	background: rgb(253, 252, 250);
-	border: 1px solid rgb(161, 5, 252);
 	max-height: 240px;
 	height: auto;
 	overflow: auto;

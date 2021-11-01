@@ -1,8 +1,16 @@
 .header{
-	padding: 15px;
-	border-bottom: 1px solid #EAEAEA;
+	background: linear-gradient(to right, rgb(243, 241, 241) 60%, rgb(138, 5, 216) 40%);
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+
+.headerWrapper{
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 5px;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-items: center;
 }
 
@@ -10,16 +18,20 @@
 	min-width: 150px;
 	display: flex;
 	color: rgb(161, 5, 252);
+	align-items: center;
 }
 
 .logoHeader{
-	font-size: 20px;
+	font-family: 'Semox';
 	font-weight: bold;
+	font-size: 25px;
 	display: block;
+	margin-left: 5px;
 }
 
 .buttons{
 	display: flex;
+	align-items: center;
 }
 
 .cartButton{
@@ -31,9 +43,57 @@
 	min-width: 15px;
 	height: 15px;
 	position: absolute;
-    top: 0px;
-    right: 3px;
-	background: orange;
+    top: -8px;
+    right: 9px;
+	background: rgb(255, 165, 0);
 	border-radius: 5px;
 	text-align: center;
+}
+
+.iconCart{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'IcoMoon-Free';
+	font-size: 20px;
+	width: 30px;
+	height: 30px;
+	margin: 0px 18px;
+	border: 1px solid rgb(128, 128, 128);
+	border-radius: 20px;
+	color: rgb(223, 221, 221);
+	cursor: pointer;
+	transition: cubic-bezier(1, 0, 0, 1) .3s all;
+}
+
+.iconCart:before {
+    content: "\e93a";
+}
+
+.iconCart:hover{
+	border: 1px solid rgb(255, 253, 253);
+}
+
+.iconCog{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'IcoMoon-Free';
+	font-size: 20px;
+	width: 30px;
+	height: 30px;
+	margin: 0px 18px;
+	border: 1px solid rgb(128, 128, 128);
+	border-radius: 20px;
+	color: rgb(223, 221, 221);
+	cursor: pointer;
+	transition: cubic-bezier(1, 0, 0, 1) .3s all;
+}
+
+.iconCog:before {
+    content: "\e994";
+}
+
+.iconCog:hover{
+	border: 1px solid rgb(255, 253, 253);
 }

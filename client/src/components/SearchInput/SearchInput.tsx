@@ -22,6 +22,7 @@ const SearchInput: React.FC = () => {
 
 	return (
 		<form className={style.searchBlock}>
+			<i>			</i>
 			<MyInput
 				value={search}
 				type='text'

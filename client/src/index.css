@@ -40,6 +40,20 @@ body {
   font-style: normal; 
 }
 
+@font-face {
+  font-family: 'IcoMoon-Free';
+  src: url('../src/fonts/IcoMoon-Free.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Semox';
+  src: url('../src/fonts/Semox.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

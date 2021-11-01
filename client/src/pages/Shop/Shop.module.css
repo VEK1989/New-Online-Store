@@ -1,6 +1,50 @@
-.shop{
-	height: 85vh;
+.shopBody{
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.startBlock{
 	padding: 30px;
+	height: 100vh;
+	background: linear-gradient(to right, rgb(243, 241, 241) 60%, rgb(138, 5, 216) 40%);
+}
+
+.wrapper{
+	width: 1280px;
+	margin: 0 auto;
+	display: flex;
+}
+
+.mainHeaders{
+	width: 500px;
+	margin: 30px 20px;
+	padding: 10px;
+}
+
+.firstHeader{
+	font-size: 53px;
+}
+
+.poster{
+	width: 470px;
+	height: 100vh;
+	background: rgb(255, 255, 255);
+	background-image: url(../../images/poster.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.shopHeader{
+	font-size: 25px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+.shop{
+	padding: 30px;
+	width: 1280px;
+	margin: 0 auto;
 	display: grid;
 	gap: 70px;
 	grid-template-columns: 150px 2fr;

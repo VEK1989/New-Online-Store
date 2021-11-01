@@ -6,10 +6,23 @@ import style from './Shop.module.css'
 
 const Shop: React.FC = () => {
 	return (
-		<div className={style.shop}>
-			<GenreBar />
-			<Goods />
-			<Pagination />
+		<div className={style.shopBody}>
+			<section className={style.startBlock}>
+				<div className={style.wrapper}>
+					<div className={style.mainHeaders}>
+						<h3>Откывай новые миры &#128214;</h3>
+						<h1 className={style.firstHeader}>Получи любимую книгу по лучшей цене &#129297;</h1>
+					</div>
+					<div className={style.poster}>
+					</div>
+				</div>
+			</section>
+			<h2 className={style.shopHeader}>У нас в продаже</h2>
+			<section className={style.shop}>
+				<GenreBar />
+				<Goods />
+				<Pagination />
+			</section>
 		</div>
 	);
 };

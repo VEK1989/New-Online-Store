@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import { PRODUCT_ROUTE } from '../../utils/consts'
-import MyButton from '../ui/MyButton/MyButton'
 import style from './ProductCart.module.css'
 import star from '../../images/star.png'
 import { useDispatch } from 'react-redux'
@@ -43,27 +42,25 @@ const ProductCart: React.FC<ProductProps> = ({ id, name, price, rating, img }) =
 			<img
 				src={`http://localhost:5000/${img}`}
 				alt='book cover'
-				height='180px'
-				width='130px'
+				height='300px'
+				width='200px'
 				onClick={() => history.push(PRODUCT_ROUTE + `/${id}`)}
 				className={style.productImg}
 			/>
 			<div className={style.productInfo}>
+				<div className={style.price} onClick={() => history.push(PRODUCT_ROUTE + `/${id}`)} >{price} &#8381;</div>
 				<div onClick={() => history.push(PRODUCT_ROUTE + `/${id}`)} className={style.productName}>{name}</div>
-				<div className={style.priceRate}>
-					<div onClick={() => history.push(PRODUCT_ROUTE + `/${id}`)} >{price} &#8381;</div>
-					<div className={style.rating}>
-						{
-							rating
-						}
-						<img src={star} alt='star' height='18px' width='18px' />
-					</div>
+				<div className={style.rating}>
+					<img src={star} alt='star' height='18px' width='18px' />
+					{
+						rating
+					}
 				</div>
-				{
+				{/* {
 					isInCart
 						? <MyButton disabled > &#10004; В корзине</MyButton>
 						: <MyButton onClick={() => inCart(id)}>В корзину</MyButton>
-				}
+				} */}
 			</div>
 		</div>
 	);

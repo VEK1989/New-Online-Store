@@ -29,31 +29,28 @@ const NavBar: React.FC = () => {
 
 	return (
 		<header className={style.header} >
-			<NavLink to={SHOP_ROUTE} className={style.logo}>
-				<img src={logo} alt='logo' height='40px' width='40px' />
-				<div>
+			<div className={style.headerWrapper}>
+				<NavLink to={SHOP_ROUTE} className={style.logo}>
+					<img src={logo} alt='logo' height='40px' width='40px' />
 					<span className={style.logoHeader}>BOOKSHELF</span>
-					<span>your favorite</span>
-				</div>
-			</NavLink>
-			<SearchInput />
-			{
-				isAuth
-					? <div className={style.buttons}>
-						{role === 'ADMIN' && <MyButton onClick={() => history.push(ADMIN_ROUTE)}>Админ</MyButton>}
-						<div className={style.cartButton}>
-							<MyButton onClick={() => history.push(CART_ROUTE)}>
-								Корзина
-							</MyButton>
-							<span className={style.cartCounter}>{countGoods}</span>
+				</NavLink>
+				<SearchInput />
+				{
+					isAuth
+						? <div className={style.buttons}>
+							{role === 'ADMIN' && <span className={style.iconCog} onClick={() => history.push(ADMIN_ROUTE)}></span>}
+							<div className={style.cartButton}>
+								<span className={style.iconCart} onClick={() => history.push(CART_ROUTE)}></span>
+								<span className={style.cartCounter}>{countGoods}</span>
+							</div>
+							<MyButton onClick={logout}>Выйти</MyButton>
 						</div>
-						<MyButton onClick={logout}>Выйти</MyButton>
-					</div>
-					: <div>
-						<MyButton onClick={() => history.push(LOGIN_ROUTE)}>Корзина</MyButton>
-						<MyButton onClick={() => history.push(LOGIN_ROUTE)}>Авторизация</MyButton>
-					</div>
-			}
+						: <div className={style.buttons}>
+							<span className={style.iconCart} onClick={() => history.push(LOGIN_ROUTE)}></span>
+							<MyButton onClick={() => history.push(LOGIN_ROUTE)}>Авторизация</MyButton>
+						</div>
+				}
+			</div>
 		</header>
 	);
 };
