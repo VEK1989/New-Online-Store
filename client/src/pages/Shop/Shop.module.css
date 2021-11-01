@@ -17,13 +17,26 @@
 }
 
 .mainHeaders{
+	height: 97vh;
 	width: 500px;
 	margin: 30px 20px;
 	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .firstHeader{
 	font-size: 53px;
+}
+
+.sliderBlock{
+	height: 140px;
+	width: 500px;
+	background: rgb(255, 255, 255);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .poster{
@@ -38,7 +51,7 @@
 .shopHeader{
 	font-size: 25px;
 	margin: 0 auto;
-	margin-top: 20px;
+	margin-top: 40px;
 }
 
 .shop{

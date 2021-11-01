@@ -31,12 +31,6 @@ const ProductCart: React.FC<ProductProps> = ({ id, name, price, rating, img }) =
 		}
 	}, [])
 
-	const inCart = (id: number) => {
-		dispatch(CartActionCreator.putProductInMyCart(id))
-		dispatch(CartActionCreator.setCountGoods(countGoods += 1))
-		setIsInCart(true)
-	}
-
 	return (
 		<div className={style.productCart}>
 			<img
@@ -56,11 +50,6 @@ const ProductCart: React.FC<ProductProps> = ({ id, name, price, rating, img }) =
 						rating
 					}
 				</div>
-				{/* {
-					isInCart
-						? <MyButton disabled > &#10004; В корзине</MyButton>
-						: <MyButton onClick={() => inCart(id)}>В корзину</MyButton>
-				} */}
 			</div>
 		</div>
 	);
