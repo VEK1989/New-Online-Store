@@ -13,9 +13,11 @@ const Shop: React.FC = () => {
 					<div className={style.mainHeaders}>
 						<h3>Откывай новые миры &#128214;</h3>
 						<h1 className={style.firstHeader}>Получи любимую книгу по лучшей цене &#129297;</h1>
-						<div className={style.sliderBlock}>
+						<div className={style.slider}>
 							<h3>Последние поступления:</h3>
-							<Slider />
+							<div className={style.sliderBlock}>
+								<Slider />
+							</div>
 						</div>
 					</div>
 					<div className={style.poster}>

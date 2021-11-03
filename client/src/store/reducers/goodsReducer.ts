@@ -8,7 +8,8 @@ const initialState: IGoodsList = {
 	product: {} as IProduct,
 	page: 1,
 	totalCount: 0,
-	limit: 12
+	limit: 12,
+	newProducts: []
 }
 
 
@@ -55,6 +56,12 @@ export const goodsReducer = (state = initialState, action: GoodsActions): IGoods
 			return {
 				...state,
 				limit: action.payload
+			}
+
+		case GoodsActionTypes.SET_NEW_PRODUCTS:
+			return {
+				...state,
+				newProducts: action.payload
 			}
 
 		default:

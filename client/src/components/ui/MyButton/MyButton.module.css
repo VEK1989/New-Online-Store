@@ -4,6 +4,7 @@
 	background-color: rgb(89, 6, 138);
 	cursor: pointer;
 	color: #ffffff;
+	border: 1px solid rgb(89, 6, 138);
 	border-radius: 20px;
 	transition: cubic-bezier(1, 0, 0, 1) .3s all;
 }

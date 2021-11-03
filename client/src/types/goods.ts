@@ -9,7 +9,8 @@ export interface IGoodsList {
 	product: IProduct,
 	page: number,
 	totalCount: number,
-	limit: number
+	limit: number,
+	newProducts: IGoods[]
 }
 
 export enum GoodsActionTypes {
@@ -19,7 +20,8 @@ export enum GoodsActionTypes {
 	SET_PRODUCT = 'SET_PRODUCT',
 	SET_PAGE = 'SET_PAGE',
 	SET_TOTAL_COUNT = 'SET_TOTAL_COUNT',
-	SET_LIMIT = 'SET_LIMIT'
+	SET_LIMIT = 'SET_LIMIT',
+	SET_NEW_PRODUCTS = 'SET_NEW_PRODUCTS'
 }
 
 interface SetGoodsAction {
@@ -57,6 +59,11 @@ interface SetLimitAction {
 	payload: number
 }
 
+interface SetNewProductsAction {
+	type: GoodsActionTypes.SET_NEW_PRODUCTS,
+	payload: IGoods[]
+}
+
 export type GoodsActions =
 	SetGoodsAction |
 	SetIsLoadingAction |
@@ -64,5 +71,6 @@ export type GoodsActions =
 	SetProductAction |
 	SetPageAction |
 	SetTotalCountAction |
-	SetLimitAction
+	SetLimitAction |
+	SetNewProductsAction
 

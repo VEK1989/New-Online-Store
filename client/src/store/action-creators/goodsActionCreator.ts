@@ -12,6 +12,7 @@ export const GoodsActionCreator = {
 	setPage: (page: number): GoodsActions => ({ type: GoodsActionTypes.SET_PAGE, payload: page }),
 	setTotalCount: (totalCount: number): GoodsActions => ({ type: GoodsActionTypes.SET_TOTAL_COUNT, payload: totalCount }),
 	setLimit: (limit: number): GoodsActions => ({ type: GoodsActionTypes.SET_LIMIT, payload: limit }),
+	setNewPoducts: (newProducts: IGoods[]): GoodsActions => ({ type: GoodsActionTypes.SET_NEW_PRODUCTS, payload: newProducts }),
 
 	getAllGoods: (authorId?: number | null, genreId?: number | null, limit?: number, page?: number) => async (dispatch: AppDispatch) => {
 		try {
@@ -40,5 +41,19 @@ export const GoodsActionCreator = {
 		finally {
 			dispatch(GoodsActionCreator.setIsLoading(false))
 		}
-	}
+	},
+
+	getNewGoods: (authorId?: number | null, genreId?: number | null, limit?: number, page?: number) => async (dispatch: AppDispatch) => {
+		try {
+			dispatch(GoodsActionCreator.setIsLoading(true))
+			const response = await GoodsService.fetchGoods(authorId, genreId, limit, page)
+			dispatch(GoodsActionCreator.setNewPoducts(response.data.rows))
+		}
+		catch (e: any) {
+			dispatch(GoodsActionCreator.setError(e.response?.data?.errors))
+		}
+		finally {
+			dispatch(GoodsActionCreator.setIsLoading(false))
+		}
+	},
 }

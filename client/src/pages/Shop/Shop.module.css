@@ -30,9 +30,13 @@
 	font-size: 53px;
 }
 
+.slider{
+	text-align: center;
+}
+
 .sliderBlock{
 	height: 140px;
-	width: 500px;
+	width: 400px;
 	background: rgb(255, 255, 255);
 	display: flex;
 	justify-content: center;

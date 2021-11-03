@@ -10,7 +10,9 @@ const Footer: React.FC = () => {
 				<NavLink to={SHOP_ROUTE}>
 					<span className={style.logoHeader}>BOOKSHELF</span>
 				</NavLink>
-
+				<span className={style.copyright}>
+					&#169; Bookshelf. Все права защищены.
+				</span>
 			</div>
 		</footer>
 	);
