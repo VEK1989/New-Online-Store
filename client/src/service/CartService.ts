@@ -5,14 +5,14 @@ import apiInstance from '../http'
 
 export default class CartService {
 	static async fetchCart(): Promise<AxiosResponse<ICart[]>> {
-		return apiInstance.get<ICart[]>('cart')
+		return await apiInstance.get<ICart[]>('cart')
 	}
 
 	static async putProductInCart(id: number): Promise<AxiosResponse<string>> {
-		return apiInstance.post<string>('cart', { id: `${id}` })
+		return await apiInstance.post<string>('cart', { id: `${id}` })
 	}
 
 	static async deleteFromCart(id: number): Promise<AxiosResponse<string>> {
-		return apiInstance.delete<string>(`cart/${id}`)
+		return await apiInstance.delete<string>(`cart/${id}`)
 	}
 }

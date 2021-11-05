@@ -1,9 +1,9 @@
 .open{
 	height: 100%;
+	width: 1280px;
 	display: block;
 	position: fixed;
 	bottom: 0;
-	min-width: 1280px;
 	background: rgba(0, 0, 0, 0.2);
 	backdrop-filter: blur(10px);
 }

@@ -12,7 +12,7 @@ const Admin: React.FC = () => {
 	}
 
 	return (
-		<div>
+		<div className={style.adminPage}>
 			<div className={style.selectPanel}>
 				{
 					chapters.map(chapter => {

@@ -13,7 +13,11 @@ export enum GenreAuthorActionTypes {
 	SET_AUTHOR = 'SET_AUTHOR',
 	SET_ERROR = 'SET_ERROR',
 	SET_SELECTED_GENRE = 'SET_SELECTED_GENRE',
-	SET_SELECTED_AUTHOR = 'SET_SELECTED_AUTHOR'
+	SET_SELECTED_AUTHOR = 'SET_SELECTED_AUTHOR',
+	ADD_GENRE = 'ADD_GENRE',
+	ADD_AUTHOR = 'ADD_AUTHOR',
+	DELETE_GENRE = 'DELETE_GENRE',
+	DELETE_AUTHOR = 'DELETE_AUTHOR'
 }
 
 interface SetGenreAction {
@@ -41,9 +45,33 @@ interface SetSelectedAuthor {
 	payload: IAuthor
 }
 
+interface AddGenreAction {
+	type: GenreAuthorActionTypes.ADD_GENRE,
+	payload: string
+}
+
+interface AddAuthorAction {
+	type: GenreAuthorActionTypes.ADD_AUTHOR,
+	payload: string
+}
+
+interface DeleteAuthorAction {
+	type: GenreAuthorActionTypes.DELETE_AUTHOR,
+	payload: number
+}
+
+interface DeleteGenreAction {
+	type: GenreAuthorActionTypes.DELETE_GENRE,
+	payload: number
+}
+
 export type GenreAuthorActions =
 	SetGenreAction |
 	SetAuthorAction |
 	SetErrorAction |
 	SetSelectedGenreAction |
-	SetSelectedAuthor
+	SetSelectedAuthor |
+	AddGenreAction |
+	AddAuthorAction |
+	DeleteAuthorAction |
+	DeleteGenreAction

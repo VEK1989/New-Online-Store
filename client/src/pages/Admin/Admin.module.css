@@ -1,3 +1,9 @@
+.adminPage{
+	width: 1280px;
+	margin: 0 auto;
+	padding: 15px;
+}
+
 .selectPanel{
 	padding: 15px;
 	display: flex;

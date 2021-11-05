@@ -5,15 +5,23 @@ import { GoodsResponse } from '../types/goodsResponse'
 
 export default class GoodsService {
 	static async fetchGoods(authorId?: number | null, genreId?: number | null, limit?: number, page?: number): Promise<AxiosResponse<GoodsResponse>> {
-		return apiInstance.get<GoodsResponse>('book', {
+		return await apiInstance.get<GoodsResponse>('book', {
 			params: {
 				authorId, genreId, limit, page
 			}
 		})
 	}
 
+	static async createProduct(product: IProduct): Promise<AxiosResponse> {
+		return await apiInstance.post('book', product)
+	}
+
+	static async deleteProduct(id: number): Promise<AxiosResponse> {
+		return await apiInstance.delete(`book/${id}`)
+	}
+
 	static async fetchProduct(id: number): Promise<AxiosResponse<IProduct>> {
-		return apiInstance.get<IProduct>(`book/${id}`)
+		return await apiInstance.get<IProduct>(`book/${id}`)
 	}
 }
 

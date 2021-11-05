@@ -1,13 +1,9 @@
 export interface IGenre {
 	id: number,
-	name: string,
-	createdAt: string,
-	updatedAt: string
+	name: string
 }
 
 export interface IAuthor {
 	id: number,
-	name: string,
-	createdAt: string,
-	updatedAt: string
+	name: string
 }
