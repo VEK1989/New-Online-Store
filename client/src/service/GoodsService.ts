@@ -12,7 +12,7 @@ export default class GoodsService {
 		})
 	}
 
-	static async createProduct(product: IProduct): Promise<AxiosResponse> {
+	static async createProduct(product: FormData): Promise<AxiosResponse> {
 		return await apiInstance.post('book', product)
 	}
 

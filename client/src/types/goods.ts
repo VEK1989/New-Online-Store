@@ -1,16 +1,15 @@
 import { IProduct } from './IProduct'
-import { IGoods } from "./IGoods"
 
 
 export interface IGoodsList {
-	goods: IGoods[],
+	goods: IProduct[],
 	isLoading: boolean,
 	error: string,
 	product: IProduct,
 	page: number,
 	totalCount: number,
 	limit: number,
-	newProducts: IGoods[]
+	newProducts: IProduct[]
 }
 
 export enum GoodsActionTypes {
@@ -21,12 +20,14 @@ export enum GoodsActionTypes {
 	SET_PAGE = 'SET_PAGE',
 	SET_TOTAL_COUNT = 'SET_TOTAL_COUNT',
 	SET_LIMIT = 'SET_LIMIT',
-	SET_NEW_PRODUCTS = 'SET_NEW_PRODUCTS'
+	SET_NEW_PRODUCTS = 'SET_NEW_PRODUCTS',
+	ADD_PRODUCT = 'ADD_PRODUCT',
+	DELETE_PRODUCT = 'DELETE_PRODUCT'
 }
 
 interface SetGoodsAction {
 	type: GoodsActionTypes.SET_GOODS,
-	payload: IGoods[]
+	payload: IProduct[]
 }
 
 interface SetIsLoadingAction {
@@ -61,7 +62,17 @@ interface SetLimitAction {
 
 interface SetNewProductsAction {
 	type: GoodsActionTypes.SET_NEW_PRODUCTS,
-	payload: IGoods[]
+	payload: IProduct[]
+}
+
+interface AddProductAction {
+	type: GoodsActionTypes.ADD_PRODUCT,
+	payload: FormData
+}
+
+interface DeleteProductAction {
+	type: GoodsActionTypes.DELETE_PRODUCT,
+	payload: number
 }
 
 export type GoodsActions =
@@ -72,5 +83,7 @@ export type GoodsActions =
 	SetPageAction |
 	SetTotalCountAction |
 	SetLimitAction |
-	SetNewProductsAction
+	SetNewProductsAction |
+	AddProductAction |
+	DeleteProductAction
 

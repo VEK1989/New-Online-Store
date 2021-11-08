@@ -24,7 +24,7 @@ const AdminGoods: React.FC = () => {
 					</tr>
 					{
 						goods.map((product) => (
-							<tr key={product.id}>
+							<tr key={product.name}>
 								<td>{product.id}</td>
 								<td><img src={`http://localhost:5000/${product.img}`} alt='product' width='20px' height='25px' /></td>
 								<td>{product.name}</td>

@@ -64,6 +64,21 @@ export const goodsReducer = (state = initialState, action: GoodsActions): IGoods
 				newProducts: action.payload
 			}
 
+		// case GoodsActionTypes.ADD_PRODUCT:
+		// 	return {
+		// 		...state,
+		// 		goods: [
+		// 			...state.goods,
+		// 			action.payload
+		// 		]
+		// 	}
+
+		case GoodsActionTypes.DELETE_PRODUCT:
+			return {
+				...state,
+				goods: state.goods.filter(item => item.id !== action.payload)
+			}
+
 		default:
 			return state
 	}

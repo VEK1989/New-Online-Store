@@ -36,7 +36,7 @@ const AdminCategories: React.FC = () => {
 							</tr>
 							{
 								genre.map((item) => (
-									<tr key={item.id}>
+									<tr key={item.name}>
 										<td>{item.id}</td>
 										<td>{item.name}</td>
 										<td><MyButton onClick={() => deleteSelectedGenre(item.id)}>X</MyButton></td>
@@ -57,7 +57,7 @@ const AdminCategories: React.FC = () => {
 							</tr>
 							{
 								author.map((item) => (
-									<tr key={item.id}>
+									<tr key={item.name}>
 										<td>{item.id}</td>
 										<td>{item.name}</td>
 										<td><MyButton onClick={() => deleteSelectedAuthor(item.id)}>X</MyButton></td>

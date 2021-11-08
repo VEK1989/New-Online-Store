@@ -1,6 +1,6 @@
-import { IGoods } from './IGoods';
+import { IProduct } from './IProduct'
 
 export interface GoodsResponse {
 	count: number,
-	rows: IGoods[]
+	rows: IProduct[]
 }

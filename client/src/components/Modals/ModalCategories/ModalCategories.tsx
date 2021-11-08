@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useTypedSelector } from '../../../hooks/useTypedSelector'
 import { GenreAuthorActionCreator } from '../../../store/action-creators/genreAuthorActionCreator'
 import MyButton from '../../ui/MyButton/MyButton'
 import MyInput from '../../ui/MyInput/MyInput'
@@ -12,6 +13,7 @@ interface ModalProps {
 }
 
 const ModalCategories: React.FC<ModalProps> = ({ visible, onHide, modalHeader }) => {
+	const { error } = useTypedSelector(state => state.genreAuthor)
 	const [value, setValue] = useState('')
 	const dispatch = useDispatch()
 
@@ -33,6 +35,11 @@ const ModalCategories: React.FC<ModalProps> = ({ visible, onHide, modalHeader })
 			<div className={style.modalWrapper}>
 				<h3>{modalHeader}</h3>
 				<form >
+					{
+						error
+							? <h4>{error}</h4>
+							: null
+					}
 					<MyInput
 						placeholder={'Введите название'}
 						value={value}
