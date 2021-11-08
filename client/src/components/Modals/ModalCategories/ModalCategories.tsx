@@ -17,6 +17,10 @@ const ModalCategories: React.FC<ModalProps> = ({ visible, onHide, modalHeader })
 	const [value, setValue] = useState('')
 	const dispatch = useDispatch()
 
+	const dontClose = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+		e.stopPropagation()
+	}
+
 	const addCategory = () => {
 		if (modalHeader === 'Добавить автора') {
 			dispatch(GenreAuthorActionCreator.addNewAuthor(value))
@@ -31,8 +35,8 @@ const ModalCategories: React.FC<ModalProps> = ({ visible, onHide, modalHeader })
 	}
 
 	return (
-		<div className={visible ? style.open : style.close}>
-			<div className={style.modalWrapper}>
+		<div className={visible ? style.open : style.close} onClick={() => onHide(false)}>
+			<div className={style.modalWrapper} onClick={(e) => dontClose(e)}>
 				<h3>{modalHeader}</h3>
 				<form >
 					{

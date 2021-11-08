@@ -29,6 +29,10 @@ const ModalGoods: React.FC<ModalProps> = ({ visible, onHide }) => {
 		{ titel: 'Аннотация', discription: '', number: 4 }
 	])
 
+	const dontClose = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+		e.stopPropagation()
+	}
+
 	const selectAuthor = (author: IAuthor) => {
 		dispatch(GenreAuthorActionCreator.setSelectedAuthor(author))
 	}
@@ -59,8 +63,8 @@ const ModalGoods: React.FC<ModalProps> = ({ visible, onHide }) => {
 
 
 	return (
-		<div className={visible ? style.open : style.close}>
-			<div className={style.modalWrapper}>
+		<div className={visible ? style.open : style.close} onClick={() => onHide(false)}>
+			<div className={style.modalWrapper} onClick={(e) => dontClose(e)}>
 				<h2>Добавить товар</h2>
 				<form>
 					<MySelect
