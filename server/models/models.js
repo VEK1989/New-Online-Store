@@ -48,7 +48,8 @@ const Rating = sequelize.define('raiting', {
 
 const BookInfo = sequelize.define('book_info', {
 	id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-	description: { type: DataTypes.STRING, allowNull: false }
+	title: { type: DataTypes.STRING, allowNull: false },
+	description: { type: DataTypes.TEXT, allowNull: false }
 })
 
 const AuthorGenre = sequelize.define('author_genre', {

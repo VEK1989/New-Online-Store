@@ -16,17 +16,17 @@ interface ModalProps {
 
 const ModalGoods: React.FC<ModalProps> = ({ visible, onHide }) => {
 	const dispatch = useDispatch()
-
+	const { goods } = useTypedSelector(state => state.goods)
 	const { author, genre, selectedAuthor, selectedGenre } = useTypedSelector(state => state.genreAuthor)
 	const [name, setName] = useState('')
 	const [price, setPrice] = useState(0)
 	const [file, setFile] = useState('')
 	const [info, setInfo] = useState([
-		{ titel: 'Издательство', discription: '', number: 0 },
-		{ titel: 'Год выпуска', discription: '', number: 1 },
-		{ titel: 'Количество страниц', discription: '', number: 2 },
-		{ titel: 'Язык', discription: '', number: 3 },
-		{ titel: 'Аннотация', discription: '', number: 4 }
+		{ title: 'Издательство', description: '', id: 0 },
+		{ title: 'Год выпуска', description: '', id: 1 },
+		{ title: 'Количество страниц', description: '', id: 2 },
+		{ title: 'Язык', description: '', id: 3 },
+		{ title: 'Аннотация', description: '', id: 4 }
 	])
 
 	const dontClose = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -46,10 +46,21 @@ const ModalGoods: React.FC<ModalProps> = ({ visible, onHide }) => {
 	}
 
 	const changeInfo = (key: string, value: any, id: number) => {
-		setInfo(info.map(i => i.number === id ? { ...i, [key]: value } : i))
+		setInfo(info.map(i => i.id === id ? { ...i, [key]: value } : i))
 	}
 
 	const addProduct = () => {
+		const newProduct = {
+			id: goods.length + 1,
+			name: name,
+			price: price,
+			img: file,
+			authorId: selectedAuthor[0].id,
+			genreId: selectedGenre[0].id,
+			rating: 0,
+			info: [...info]
+		}
+
 		const formData = new FormData()
 		formData.append('name', name)
 		formData.append('price', `${price}`)
@@ -57,7 +68,9 @@ const ModalGoods: React.FC<ModalProps> = ({ visible, onHide }) => {
 		formData.append('authorId', `${selectedAuthor[0].id}`)
 		formData.append('genreId', `${selectedGenre[0].id}`)
 		formData.append('info', JSON.stringify(info))
-		dispatch(GoodsActionCreator.createProduct(formData))
+		dispatch(GoodsActionCreator.createProduct(newProduct, formData))
+		dispatch(GenreAuthorActionCreator.setSelectedAuthor([]))
+		dispatch(GenreAuthorActionCreator.setSelectedGenre([]))
 		onHide(false)
 	}
 
@@ -96,10 +109,10 @@ const ModalGoods: React.FC<ModalProps> = ({ visible, onHide }) => {
 					{
 						info.map(i => {
 							return <MyInput
-								key={i.number}
-								placeholder={i.titel}
-								value={i.discription}
-								onChange={(e: ChangeEvent<HTMLInputElement>) => changeInfo('discription', `${e.target.value}`, i.number)}
+								key={i.id}
+								placeholder={i.title}
+								value={i.description}
+								onChange={(e: ChangeEvent<HTMLInputElement>) => changeInfo('description', `${e.target.value}`, i.id)}
 							/>
 						})
 					}

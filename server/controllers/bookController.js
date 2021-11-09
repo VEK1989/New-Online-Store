@@ -14,11 +14,12 @@ class BookController {
 
 			if (info) {
 				info = JSON.parse(info)
+				console.log(info)
 				info.forEach(i =>
 					BookInfo.create({
-						title: i.title,
 						description: i.description,
-						bookId: book.id
+						bookId: book.id,
+						title: i.title
 					})
 				)
 			}
@@ -72,6 +73,7 @@ class BookController {
 			const book = await Book.findOne({ where: { id } })
 			if (book) {
 				await Book.destroy({ where: { id } })
+				await BookInfo.destroy({ where: { bookId: id } })
 				return res.json('Книга удалена')
 			} else {
 				return res.json('Книги нет в базе данных')

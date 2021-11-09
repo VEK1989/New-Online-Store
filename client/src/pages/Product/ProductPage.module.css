@@ -9,13 +9,6 @@
 	margin: 0 0 20px;
 }
 
-.properties{
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: flex-start;
-}
-
 .price{
 	display: block;
 	font-size: 18px;
@@ -35,4 +28,33 @@
 	font-size: 19px;
 	border: 1px solid #f1a545;
 	background: #f1a545;
+}
+
+.properties{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.proprtiesList{
+	margin: 10px 0px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.propertiesHeader{
+	font-size: 18px;
+}
+
+.propertiesValue{
+	font-size: 17px;
+	color: rgb(82, 82, 207);
+}
+
+.productDiscription{
+	margin: 10px;
+	font-size: 16px;
 }

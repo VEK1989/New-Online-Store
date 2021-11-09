@@ -67,7 +67,7 @@ interface SetNewProductsAction {
 
 interface AddProductAction {
 	type: GoodsActionTypes.ADD_PRODUCT,
-	payload: FormData
+	payload: IProduct
 }
 
 interface DeleteProductAction {

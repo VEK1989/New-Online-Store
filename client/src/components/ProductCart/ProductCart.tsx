@@ -9,7 +9,7 @@ interface ProductProps {
 	name: string,
 	price: number,
 	rating: number,
-	img: string,
+	img: string
 }
 
 const ProductCart: React.FC<ProductProps> = ({ id, name, price, rating, img }) => {

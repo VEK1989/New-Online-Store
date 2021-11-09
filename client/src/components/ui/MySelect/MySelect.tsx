@@ -27,25 +27,27 @@ const MySelect: React.FC<ISelectList> = ({ list, firstName, slectedItem }) => {
 				onClick={() => setItemsList(true)}
 			>
 				{
-					firstName.length > 0
+					firstName[0] !== undefined
 						? firstName[0].name
-						: 'Выберите жанр'
+						: 'Выберите категорию'
 				}
 			</MyButton>
 			{
 				itemsList
 					? <ul className={style.listBlock}>
 						{
-							list.map(item => {
-								return <li
-									onClick={() => selectListItem(item)} // не выбирается надо что-то исправить
-									value={item.id}
-									key={item.name}
-									className={style.listItem}
-								>
-									{item.name}
-								</li>
-							})
+							list
+								? list.map(item => {
+									return <li
+										onClick={() => selectListItem(item)}
+										value={item.id}
+										key={item.name}
+										className={style.listItem}
+									>
+										{item.name}
+									</li>
+								})
+								: null
 						}
 					</ul>
 					: null

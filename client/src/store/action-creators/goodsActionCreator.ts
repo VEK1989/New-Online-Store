@@ -12,7 +12,7 @@ export const GoodsActionCreator = {
 	setTotalCount: (totalCount: number): GoodsActions => ({ type: GoodsActionTypes.SET_TOTAL_COUNT, payload: totalCount }),
 	setLimit: (limit: number): GoodsActions => ({ type: GoodsActionTypes.SET_LIMIT, payload: limit }),
 	setNewPoducts: (newProducts: IProduct[]): GoodsActions => ({ type: GoodsActionTypes.SET_NEW_PRODUCTS, payload: newProducts }),
-	// addOneProduct: (product: IProduct): GoodsActions => ({ type: GoodsActionTypes.ADD_PRODUCT, payload: product }),
+	addOneProduct: (product: IProduct): GoodsActions => ({ type: GoodsActionTypes.ADD_PRODUCT, payload: product }),
 	deleteOneProduct: (id: number): GoodsActions => ({ type: GoodsActionTypes.DELETE_PRODUCT, payload: id }),
 
 	getAllGoods: (authorId?: number | null, genreId?: number | null, limit?: number, page?: number) => async (dispatch: AppDispatch) => {
@@ -58,20 +58,18 @@ export const GoodsActionCreator = {
 		}
 	},
 
-	createProduct: (
-		// product: IProduct,
-		formData: FormData) => async (dispatch: AppDispatch) => {
-			try {
-				await GoodsService.createProduct(formData)
-				// dispatch(GoodsActionCreator.addOneProduct(product))
-			}
-			catch (e: any) {
-				dispatch(GoodsActionCreator.setError(e.response?.data?.errors))
-			}
-			finally {
-				dispatch(GoodsActionCreator.setIsLoading(false))
-			}
-		},
+	createProduct: (product: IProduct, formData: FormData) => async (dispatch: AppDispatch) => {
+		try {
+			await GoodsService.createProduct(formData)
+			dispatch(GoodsActionCreator.addOneProduct(product))
+		}
+		catch (e: any) {
+			dispatch(GoodsActionCreator.setError(e.response?.data?.errors))
+		}
+		finally {
+			dispatch(GoodsActionCreator.setIsLoading(false))
+		}
+	},
 
 	removeOneProduct: (id: number) => async (dispatch: AppDispatch) => {
 		try {

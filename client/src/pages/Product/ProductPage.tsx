@@ -45,8 +45,29 @@ const ProductPage: React.FC = () => {
 							<span className={style.ratingValue}>{product.rating}</span>
 							<StarRating />
 						</div>
+						{
+							product.info
+								? <div className={style.proprtiesList}>
+									<div>
+										<span className={style.propertiesHeader}>Издательство: </span>
+										<span className={style.propertiesValue}>{product.info[0].description}</span>
+									</div>
+									<div>
+										<span className={style.propertiesHeader}>Год выпуска: </span>
+										<span className={style.propertiesValue}>{product.info[1].description} г.</span>
+									</div>
+									<div>
+										<span className={style.propertiesHeader}>Количество страниц: </span>
+										<span className={style.propertiesValue}>{product.info[2].description} стр.</span>
+									</div>
+									<div>
+										<span className={style.propertiesHeader}>Язык издания: </span>
+										<span className={style.propertiesValue}>{product.info[3].description}</span>
+									</div>
+								</div>
+								: null
+						}
 					</div>
-					<div>{product.info}</div>
 					{
 						isInCart
 							? <MyButton disabled > &#10004; В корзине</MyButton>
@@ -55,7 +76,11 @@ const ProductPage: React.FC = () => {
 				</div>
 			</div>
 			<h2>Аннотация книги "{product.name}"</h2>
-			<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas et quasi quisquam, fuga maiores minima saepe molestias, repudiandae ullam enim sit hic illum quos ipsa sed est voluptates esse optio?</p>
+			{
+				product.info
+					? <p className={style.productDiscription}>{product.info[4].description}</p>
+					: null
+			}
 		</div>
 	);
 };
