@@ -12,7 +12,7 @@ import SearchInput from '../SearchInput/SearchInput'
 
 const NavBar: React.FC = () => {
 	const isAuth = useTypedSelector(state => state.auth.isAuth)
-	const role = useTypedSelector(state => state.auth.user.role)
+	const { role, email } = useTypedSelector(state => state.auth.user)
 	const countGoods = useTypedSelector(state => state.cart.countGoods)
 
 	const history = useHistory()
@@ -20,7 +20,7 @@ const NavBar: React.FC = () => {
 	const dispatch = useDispatch()
 
 	const logout = () => {
-		dispatch(AuthActionCreator.logout())
+		dispatch(AuthActionCreator.logout(email))
 	}
 
 	useEffect(() => {
@@ -31,7 +31,7 @@ const NavBar: React.FC = () => {
 		<header className={style.header} >
 			<div className={style.headerWrapper}>
 				<NavLink to={SHOP_ROUTE} className={style.logo}>
-					<img src={logo} alt='logo' height='40px' width='40px' />
+					<img src={logo} alt='logo' height='20px' width='20px' />
 					<span className={style.logoHeader}>BOOKSHELF</span>
 				</NavLink>
 				<SearchInput />

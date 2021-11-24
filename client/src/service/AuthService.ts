@@ -11,7 +11,7 @@ export default class AuthService {
 		return await apiInstance.post<AuthResponse>('user/registration', { email, password })
 	}
 
-	static async logout(): Promise<void> {
-		return await apiInstance.post('user/logout')
+	static async logout(email: string): Promise<void> {
+		return await apiInstance.post('user/logout', { email })
 	}
 }

@@ -45,9 +45,10 @@ export const AuthActionCreator = {
 		}
 	},
 
-	logout: () => async (dispatch: AppDispatch) => {
+	logout: (email: string) => async (dispatch: AppDispatch) => {
 		try {
 			dispatch(AuthActionCreator.setIsLoading(true))
+			await AuthService.logout(email)
 			localStorage.removeItem('token')
 			dispatch(AuthActionCreator.setIsAuth(false))
 			dispatch(AuthActionCreator.setUser({} as IUser))

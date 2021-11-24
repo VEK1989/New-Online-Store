@@ -6,7 +6,7 @@ import ProductCart from '../ProductCart/ProductCart'
 import style from './Goods.module.css'
 
 const Goods: React.FC = () => {
-	const goods = useTypedSelector(state => state.goods.goods)
+	const { goods, isLoading } = useTypedSelector(state => state.goods)
 	const selectedGenre = useTypedSelector(state => state.genreAuthor.selectedGenre)
 	const selectedAuthor = useTypedSelector(state => state.genreAuthor.selectedAuthor)
 	const page = useTypedSelector(state => state.goods.page)
@@ -34,6 +34,7 @@ const Goods: React.FC = () => {
 						price={product.price}
 						img={product.img}
 						rating={product.rating}
+						isLoading={isLoading}
 					/>
 				})
 			}

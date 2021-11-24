@@ -14,6 +14,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	background: rgb(243, 241, 241);
 	box-shadow: 5px 5px 5px 5px #000000c7;
 }
 
@@ -36,5 +37,11 @@ form{
 .registLink{
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+}
+
+.notActive{
+	display: flex;
+	justify-content: center;
 	align-items: center;
 }
