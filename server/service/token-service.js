@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const { Token } = require('../models/models')
+const { Token, User } = require('../models/models')
 
 class TokenService {
 	generateToken(payload) {
@@ -39,8 +39,8 @@ class TokenService {
 		return token
 	}
 
-	async removeToken(refreshToken) {
-		const tokenData = await Token.destroy({ where: { refreshToken: refreshToken } })
+	async removeToken(user) {
+		const tokenData = await Token.destroy({ where: { userId: user.id } })
 		return tokenData
 	}
 

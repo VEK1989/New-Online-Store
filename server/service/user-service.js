@@ -54,8 +54,9 @@ class UserService {
 		return token
 	}
 
-	async logout(refreshToken) {
-		const token = await tokenService.removeToken(refreshToken) // удаляем токен
+	async logout(email) {
+		const user = await User.findOne({ where: { email } })
+		const token = await tokenService.removeToken(user) // удаляем токен
 		return token
 	}
 
