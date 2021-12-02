@@ -7,7 +7,7 @@ class RatingController {
 		try {
 			const { rate, bookId } = req.body
 			const token = req.headers.authorization.split(' ')[1]
-			const user = jwt.verify(token, process.env.SECRET_KEY)
+			const user = jwt.verify(token, process.env.SECRET_REFRESH_KEY)
 			await Rating.create({ rate, bookId, userId: user.id })
 
 			let rating = await Rating.findAndCountAll({
@@ -19,9 +19,9 @@ class RatingController {
 			let allRating = 0
 			let middleRating
 			rating.rows.forEach(item => allRating += item.rate)
-			middleRating = Number(allRating) / Number(rating.count)
+			middleRating = Math.floor(Number(allRating) / Number(rating.count))
 
-			await Device.update(
+			await Book.update(
 				{ rating: middleRating },
 				{ where: { id: bookId } }
 			)
@@ -36,15 +36,15 @@ class RatingController {
 		try {
 			const { bookId } = req.body
 			const token = req.headers.authorization.split(' ')[1]
-			const user = jwt.verify(token, process.env.SECRET_KEY)
+			const user = jwt.verify(token, process.env.SECRET_REFRESH_KEY)
 			const checkRating = await Rating.findOne({ where: { bookId, userId: user.id } })
 			const checkBooks = await Book.findOne({ where: { id: bookId } })
 			if (!checkBooks) {
-				return res.json({ allow: false })
+				return res.json('Книга не найдена в базе данных')
 			} else if (checkRating && checkBooks) {
-				return res.json({ allow: false })
+				return res.json(checkBooks.rating)
 			}
-			return res.json({ allow: true })
+			return res.json(checkBooks.rating)
 		} catch (e) {
 			next(ApiError.unauthorizedError(e.message))
 		}

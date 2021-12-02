@@ -6,6 +6,6 @@ const ratingController = require('../controllers/ratingController')
 
 router
 	.post('/', authMiddleware, checkAddRating, ratingController.addRating)
-	.post('/check-rating', authMiddleware, ratingController.checkRating);
+	.get('/check-rating', authMiddleware, ratingController.checkRating);
 
 module.exports = router
