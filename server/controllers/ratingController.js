@@ -7,7 +7,7 @@ class RatingController {
 		try {
 			const { rate, bookId } = req.body
 			const token = req.headers.authorization.split(' ')[1]
-			const user = jwt.verify(token, process.env.SECRET_REFRESH_KEY)
+			const user = jwt.verify(token, process.env.SECRET_ACCESS_KEY)
 			await Rating.create({ rate, bookId, userId: user.id })
 
 			let rating = await Rating.findAndCountAll({
@@ -36,7 +36,7 @@ class RatingController {
 		try {
 			const { bookId } = req.body
 			const token = req.headers.authorization.split(' ')[1]
-			const user = jwt.verify(token, process.env.SECRET_REFRESH_KEY)
+			const user = jwt.verify(token, process.env.SECRET_ACCESS_KEY)
 			const checkRating = await Rating.findOne({ where: { bookId, userId: user.id } })
 			const checkBooks = await Book.findOne({ where: { id: bookId } })
 			if (!checkBooks) {
