@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.86f42479.chunk.css",
+    "main.js": "/static/js/main.0fc04a52.chunk.js",
+    "main.js.map": "/static/js/main.0fc04a52.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.8de99721.js",
+    "runtime-main.js.map": "/static/js/runtime-main.8de99721.js.map",
+    "static/css/2.d32109bb.chunk.css": "/static/css/2.d32109bb.chunk.css",
+    "static/js/2.794567bf.chunk.js": "/static/js/2.794567bf.chunk.js",
+    "static/js/2.794567bf.chunk.js.map": "/static/js/2.794567bf.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.d32109bb.chunk.css.map": "/static/css/2.d32109bb.chunk.css.map",
+    "static/css/main.86f42479.chunk.css.map": "/static/css/main.86f42479.chunk.css.map",
+    "static/js/2.794567bf.chunk.js.LICENSE.txt": "/static/js/2.794567bf.chunk.js.LICENSE.txt",
+    "static/media/EmptyCart.e70dcf4e.png": "/static/media/EmptyCart.e70dcf4e.png",
+    "static/media/index.css": "/static/media/Semox.024c8ea6.ttf",
+    "static/media/loading.b8eaef34.gif": "/static/media/loading.b8eaef34.gif",
+    "static/media/Shop.module.css": "/static/media/poster.53886579.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8de99721.js",
+    "static/css/2.d32109bb.chunk.css",
+    "static/js/2.794567bf.chunk.js",
+    "static/css/main.86f42479.chunk.css",
+    "static/js/main.0fc04a52.chunk.js"
+  ]
+}
