@@ -7,6 +7,7 @@ import { RatingActionCreator } from '../../store/action-creators/ratingActionCre
 const StarRating: React.FC = () => {
 	const rating = useTypedSelector(state => state.goods.product.rating)
 	const { id } = useTypedSelector(state => state.goods.product)
+	const { isRatingLoading, ratingError } = useTypedSelector(state => state.rating)
 	const dispatch = useDispatch()
 
 	const handleRating = (rate: number) => {
@@ -16,6 +17,9 @@ const StarRating: React.FC = () => {
 	return (
 		<div>
 			<Rating onClick={handleRating} ratingValue={rating} />
+			{
+				ratingError && <p>{ratingError}</p>
+			}
 		</div>
 	);
 };

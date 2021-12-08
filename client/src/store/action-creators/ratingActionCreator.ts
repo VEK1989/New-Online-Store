@@ -8,12 +8,14 @@ export const RatingActionCreator = {
 
 	putRating: (rate: number, bookId: number) => async (dispatch: AppDispatch) => {
 		try {
-			await RatingService.createRating(rate, bookId)
+			dispatch(RatingActionCreator.setRatingIsLoading(true))
+			const response = await RatingService.createRating(rate, bookId)
 		}
 		catch (e: any) {
+			dispatch(RatingActionCreator.setError(e.response?.data?.errors))
 		}
 		finally {
-
+			dispatch(RatingActionCreator.setRatingIsLoading(false))
 		}
 	}
 }
